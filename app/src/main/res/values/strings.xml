@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">final_project</string>
 
-    // LOGIN PAGE
+    // LOGIN + SIGN-UP PAGE
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="return_password">Return Password</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="is_supplier">Supplier?</string>
     <string name="login">LOGIN</string>
-    <string name="sing_up">SING UP</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="sign_in">SIGN IN</string>
     <string name="supplier">Supplier</string>
 </resources>

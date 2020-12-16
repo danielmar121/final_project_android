@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project">
 
+        <activity android:name=".activities.SignUpActivity" />
+
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>
