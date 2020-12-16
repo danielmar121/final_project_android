@@ -12,4 +12,19 @@
     <string name="sign_up">SIGN UP</string>
     <string name="sign_in">SIGN IN</string>
     <string name="supplier">Supplier</string>
+    <string name="supplier_sign_up_page">Supplier Details</string>
+
+    //SUPPLIER SIGN UP PAGE
+    <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
+    <string name="upload">Upload Photo</string>
+    <string name="done_supplier_sign_up">Open Store</string>
+    <string-array name="supplier_types">
+        <item>Fish</item>
+        <item>Meat</item>
+        <item>Vegetable</item>
+    </string-array>
+
 </resources>
