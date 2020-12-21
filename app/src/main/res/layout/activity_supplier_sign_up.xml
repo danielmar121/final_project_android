@@ -104,38 +104,44 @@
                 android:padding="15dp"
                 android:textSize="15sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/supplier_sign_up_BTN_upload_photo"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/circle_corners_button_login"
-                android:drawableStart="@drawable/photo"
-                android:padding="10dp"
-                android:text="@string/upload" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:background="@drawable/circle_corners_edit_text"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
                     android:text="Type:" />
 
                 <Spinner
                     android:id="@+id/supplier_sign_up_SPN_type"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/supplier_sign_up_BTN_upload_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:drawablePadding="15dp"
+                android:background="@drawable/circle_corners_button_login"
+                android:drawableStart="@drawable/photo"
+                android:padding="15dp"
+                android:text="@string/upload"
+                android:layout_gravity="center"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/supplier_sign_up_BTN_open_store"
