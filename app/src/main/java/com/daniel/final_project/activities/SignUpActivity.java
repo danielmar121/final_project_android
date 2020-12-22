@@ -10,7 +10,7 @@ package com.daniel.final_project.activities;
         import com.daniel.final_project.R;
 
 public class SignUpActivity extends AppCompatActivity {
-    Button login_BTN_sing_in;
+    Button login_BTN_sign_in;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,11 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void findViews() {
-        login_BTN_sing_in = findViewById(R.id.sign_up_BTN_sign_in);
+        login_BTN_sign_in = findViewById(R.id.sign_up_BTN_sign_in);
     }
 
     private void initViews() {
-        login_BTN_sing_in.setOnClickListener(new View.OnClickListener() {
+        login_BTN_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signUp();

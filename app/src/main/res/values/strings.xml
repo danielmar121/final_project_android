@@ -27,4 +27,43 @@
         <item>Vegetable</item>
     </string-array>
 
+    //SUPPLIER ADDING PRODUCT PAGE
+    <string name="supplier_adding_product_page">Adding Product</string>
+    <string name="product">Product Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="upload_picture">Upload Picture</string>
+    <string name="cancel">Cancel</string>
+    <string name="approve">Approve</string>
+
+
+    //BUYER PAYMENT PAGE
+    <string name="buyer">Buyer</string>
+    <string name="buyer_payment_page">Payment</string>
+    <string name="id">ID</string>
+    <string name="full_name">Full Name</string>
+    <string name="credit_number">Credit Card Number</string>
+    <string name="security_number">Security Number (cvv)</string>
+    <string name="pay">Pay</string>
+    <string-array name="credit_card_year">
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+    </string-array>
+    <string-array name="credit_card_month">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
 </resources>
