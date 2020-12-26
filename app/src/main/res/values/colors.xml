@@ -12,4 +12,14 @@
     <color name="light_green_500">#03AC13</color>
     <color name="red">#FF0000</color>
 
+    //Application color palate
+    <color name="dark_blue">#264653</color>
+    <color name="blue_green">#2A9D8F</color>
+    <color name="yellow">#E9C46A</color>
+    <color name="orange_light">#E89468</color>
+    <color name="orange_dark">#E76F51</color>
+
+
+
+
 </resources>
