@@ -25,20 +25,21 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/buyer_main_page_IMG_logo"
+        android:id="@+id/buyer_main_page_IMG_advertise"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_below="@+id/login_ETXTLYT_password"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="10dp"
         android:scaleType="fitXY"
+        android:background="@color/white"
         android:src="@drawable/vegetables" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/buyer_main_page_LST_shops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/buyer_main_page_IMG_logo"
+        android:layout_below="@+id/buyer_main_page_IMG_advertise"
         android:layout_above="@+id/buyer_main_page_NGN_bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
