@@ -66,4 +66,13 @@
         <item>12</item>
     </string-array>
 
+    // BUYER MAIN PAGE
+    <string name="search">Search</string>
+
+    //BUYER MENU
+    <string name="logout">Log out</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="shop">Shop</string>
+
 </resources>

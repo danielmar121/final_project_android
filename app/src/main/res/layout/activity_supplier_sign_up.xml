@@ -140,8 +140,7 @@
                 android:drawableStart="@drawable/photo"
                 android:padding="15dp"
                 android:text="@string/upload"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/supplier_sign_up_BTN_open_store"

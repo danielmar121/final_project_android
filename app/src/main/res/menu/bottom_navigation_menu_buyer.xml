@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_buyer_MUNE_log_out"
+        android:enabled="true"
+        android:icon="@drawable/logout"
+        android:title="@string/logout" />
+    <item
+        android:id="@+id/menu_buyer_MUNE_shop"
+        android:enabled="true"
+        android:icon="@drawable/shop"
+        android:title="@string/shop" />
+    <item
+        android:id="@+id/menu_buyer_MUNE_cart"
+        android:enabled="true"
+        android:icon="@drawable/cart"
+        android:title="@string/cart" />
+    <item
+        android:id="@+id/menu_buyer_MUNE_profile"
+        android:enabled="true"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
+</menu>
