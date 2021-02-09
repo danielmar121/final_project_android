@@ -3,6 +3,7 @@ package com.daniel.final_project.services;
 import android.content.Context;
 import android.util.Log;
 
+import com.daniel.final_project.interfaces.BuyerShopsCallBack;
 import com.daniel.final_project.interfaces.LandingPageCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
@@ -16,6 +17,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyFireBase {
 
@@ -103,4 +107,26 @@ public class MyFireBase {
 //                .setQuantity(2);
     }
 
+    public void getShopsForBuyer(BuyerShopsCallBack buyerShopsCallBack) {
+        DatabaseReference userRef = this.database.getReference("shops");
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Shop> shops = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Shop shop = snapshot.getValue(Shop.class);
+                    shops.add(shop);
+                }
+
+                buyerShopsCallBack.putShopsInList(shops);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
 }
