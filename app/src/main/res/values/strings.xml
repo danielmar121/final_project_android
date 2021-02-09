@@ -13,6 +13,7 @@
     <string name="sign_in">SIGN IN</string>
     <string name="supplier">Supplier</string>
     <string name="supplier_sign_up_page">Supplier Details</string>
+    <string name="phone">Phone Number</string>
 
     //SUPPLIER SIGN UP PAGE
     <string name="name">Name</string>
@@ -34,6 +35,11 @@
     <string name="upload_picture">Upload Picture</string>
     <string name="cancel">Cancel</string>
     <string name="approve">Approve</string>
+
+
+    <string name="sign_in_cancelled">Sign in cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">Unknown error</string>
 
 
     //BUYER PAYMENT PAGE
@@ -65,5 +71,15 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+    <string name="title_activity_phone_auth">Phone Auth Activity</string>
+
+    //BUYER MENU
+    <string name="log_out">Log out</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="shops">Shop</string>
+
+    //SUPPLIER MENU
+    <string name="my_shop">My Shop</string>
 
 </resources>

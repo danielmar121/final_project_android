@@ -12,4 +12,11 @@
     <color name="light_green_500">#03AC13</color>
     <color name="red">#FF0000</color>
 
+    <color name="material_orange_50">#FBDAA8</color>
+    <color name="material_orange_500">#ED9121</color>
+    <color name="material_orange_700">#ED9921</color>
+    <color name="material_orange_a200">#E9F0AE</color>
+    <color name="material_green_a700">#388E3C</color>
+    <color name="material_purple_a700">#000</color>
+
 </resources>

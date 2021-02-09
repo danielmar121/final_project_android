@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_buyer"
+    app:startDestination="@+id/navigation_shops_buyer">
+
+    <fragment
+        android:id="@+id/navigation_profile_buyer"
+        android:name="com.daniel.final_project.activities.buyer.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile_buyer" />
+
+    <fragment
+        android:id="@+id/navigation_cart_buyer"
+        android:name="com.daniel.final_project.activities.buyer.ui.cart.CartFragment"
+        android:label="@string/cart"
+        tools:layout="@layout/fragment_cart_buyer" />
+
+    <fragment
+        android:id="@+id/navigation_shops_buyer"
+        android:name="com.daniel.final_project.activities.buyer.ui.shops.ShopsFragment"
+        android:label="@string/shops"
+        tools:layout="@layout/fragment_shops_buyer" />
+
+    <fragment
+        android:id="@+id/navigation_log_out_buyer"
+        android:name="com.daniel.final_project.activities.buyer.ui.logOut.LogOutFragment"
+        android:label="@string/log_out"
+        tools:layout="@layout/fragment_log_out_buyer" />
+</navigation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_supplier"
+    app:startDestination="@+id/navigation_shop_supplier">
+
+    <fragment
+        android:id="@+id/navigation_log_out_supplier"
+        android:name="com.daniel.final_project.activities.supplier.ui.logOut.LogOutFragment"
+        android:label="@string/log_out"
+        tools:layout="@layout/fragment_log_out_supplier" />
+
+    <fragment
+        android:id="@+id/navigation_shop_supplier"
+        android:name="com.daniel.final_project.activities.supplier.ui.shop.ShopFragment"
+        android:label="@string/my_shop"
+        tools:layout="@layout/fragment_shop_supplier" />
+
+    <fragment
+        android:id="@+id/navigation_profile_supplier"
+        android:name="com.daniel.final_project.activities.supplier.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile_supplier" />
+</navigation>

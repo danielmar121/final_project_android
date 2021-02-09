@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_log_out_supplier"
+        android:icon="@drawable/logout"
+        android:title="@string/log_out" />
+
+    <item
+        android:id="@+id/navigation_shop_supplier"
+        android:icon="@drawable/shop"
+        android:title="@string/my_shop" />
+
+    <item
+        android:id="@+id/navigation_profile_supplier"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
+
+</menu>

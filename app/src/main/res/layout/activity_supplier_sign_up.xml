@@ -90,20 +90,6 @@
                 android:padding="15dp"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/supplier_sign_up_ETXT_password_return"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
-                android:autofillHints="Aa123456"
-                android:background="@drawable/circle_corners_edit_text"
-                android:hint="@string/return_password"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:textSize="15sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -140,8 +126,7 @@
                 android:drawableStart="@drawable/photo"
                 android:padding="15dp"
                 android:text="@string/upload"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/supplier_sign_up_BTN_open_store"

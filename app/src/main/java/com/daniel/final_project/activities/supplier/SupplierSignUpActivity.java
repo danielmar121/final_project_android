@@ -1,10 +1,10 @@
 package com.daniel.final_project.activities.supplier;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.daniel.final_project.R;
 
@@ -21,4 +21,13 @@ public class SupplierSignUpActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
+
+//    Shop shop = new Shop()
+//            .setSid("S001")
+//            .setName("Gals")
+//            .setType("Clothes")
+//            .setAddress("Ben Yehuda 40 TLV")
+//            .setDescription("Anything you need for the man and women")
+//            .setImageUrl("photo.url")
+//            .setUid(firebaseUser.getUid());
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_log_out_buyer"
+        android:icon="@drawable/logout"
+        android:title="@string/log_out" />
+
+    <item
+        android:id="@+id/navigation_shops_buyer"
+        android:icon="@drawable/shop"
+        android:title="@string/shops" />
+
+    <item
+        android:id="@+id/navigation_cart_buyer"
+        android:icon="@drawable/cart"
+        android:title="@string/cart" />
+
+    <item
+        android:id="@+id/navigation_profile_buyer"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
+
+</menu>
