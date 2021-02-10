@@ -81,5 +81,6 @@
 
     //SUPPLIER MENU
     <string name="my_shop">My Shop</string>
+    <string name="search">Search</string>
 
 </resources>
