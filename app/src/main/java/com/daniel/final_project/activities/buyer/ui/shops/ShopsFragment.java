@@ -1,7 +1,7 @@
 package com.daniel.final_project.activities.buyer.ui.shops;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.BuyerShopsCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
 import com.google.android.material.textfield.TextInputEditText;
@@ -35,8 +35,10 @@ public class ShopsFragment extends Fragment {
 
             adapterShop.setClickListener(new AdapterShop.MyItemClickListener() {
                 @Override
-                public void onItemClick(View view, int position) {
-                    Log.d("putShopsInList", "Shop number " + position);
+                public void onItemClick(View view, String sid) {
+                    Intent shopIntent = new Intent(getContext(), ShopBuyer.class);
+                    shopIntent.putExtra(ShopBuyer.SID, sid);
+                    startActivity(shopIntent);
                 }
             });
 

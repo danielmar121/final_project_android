@@ -45,6 +45,15 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder> 
                 .load(shop.getImageUrl())
                 .centerCrop()
                 .into(holder.shop_buyer_IMG_cover);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mClickListener != null) {
+                    mClickListener.onItemClick(view, shop.getSid());
+                }
+            }
+        });
     }
 
     // total number of rows
@@ -65,7 +74,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder> 
 
     // parent activity will implement this method to respond to click events
     public interface MyItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, String sid);
     }
 
     public class MyViewHolder extends ViewHolder {
@@ -78,14 +87,6 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder> 
             movie_LBL_description = itemView.findViewById(R.id.movie_LBL_description);
             shop_buyer_IMG_cover = itemView.findViewById(R.id.shop_buyer_IMG_cover);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mClickListener != null) {
-                        mClickListener.onItemClick(view, getAdapterPosition());
-                    }
-                }
-            });
         }
     }
 

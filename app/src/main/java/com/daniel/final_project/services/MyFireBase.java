@@ -3,8 +3,10 @@ package com.daniel.final_project.services;
 import android.content.Context;
 import android.util.Log;
 
-import com.daniel.final_project.interfaces.BuyerShopsCallBack;
 import com.daniel.final_project.interfaces.LandingPageCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerShopCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
@@ -16,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -91,26 +94,17 @@ public class MyFireBase {
     public void updateOrder(Order order) {
         this.myRef = this.database.getReference("orders");
         myRef.child(order.getOid()).setValue(order);
-//        Order order = new Order()
-//                .setOid("O001")
-//                .setUid(firebaseUser.getUid())
-//                .setSid("S001");
     }
 
     public void updateProductOrder(ProductOrder productOrder) {
         this.myRef = this.database.getReference("productOrder");
         myRef.child(productOrder.getProductOrderId()).setValue(productOrder);
-//        ProductOrder productOrder = new ProductOrder()
-//                .setProductOrderId("PO001")
-//                .setOid("O001")
-//                .setPid("P001")
-//                .setQuantity(2);
     }
 
     public void getShopsForBuyer(BuyerShopsCallBack buyerShopsCallBack) {
-        DatabaseReference userRef = this.database.getReference("shops");
+        DatabaseReference shopsRef = this.database.getReference("shops");
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        shopsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Shop> shops = new ArrayList<>();
@@ -121,6 +115,52 @@ public class MyFireBase {
                 }
 
                 buyerShopsCallBack.putShopsInList(shops);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void getProductsForShop(BuyerShopCallBack buyerShopCallBack, String sid) {
+        Query productsRef = this.database.getReference("products").orderByChild("sid").equalTo(sid);
+
+        productsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Product> products = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Product product = snapshot.getValue(Product.class);
+                    products.add(product);
+                }
+
+                buyerShopCallBack.putProductsInList(products);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void getOpenOrders(BuyerOrderCallBack buyerOrderCallBack, String uid) {
+        Query productsRef = this.database.getReference("orders").orderByChild("uid").equalTo(uid);
+
+        productsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Product> products = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Product product = snapshot.getValue(Product.class);
+                    products.add(product);
+                }
+
+                buyerOrderCallBack.putProductsInList(products);
             }
 
             @Override
