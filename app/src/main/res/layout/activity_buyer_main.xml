@@ -7,26 +7,31 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/buyer_main_NAV_bottom"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buyer_main_FRM_activity"
         app:menu="@menu/bottom_nav_menu_buyer" />
 
-    <fragment
-        android:id="@+id/buyer_main_FRM_activity"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/buyer_main_NAV_bottom"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation_buyer" />
+
+        <fragment
+            android:id="@+id/buyer_main_FRM_activity"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/buyer_main_NAV_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/mobile_navigation_buyer" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
