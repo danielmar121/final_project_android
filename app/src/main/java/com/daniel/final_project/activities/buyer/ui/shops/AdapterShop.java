@@ -50,7 +50,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder> 
             @Override
             public void onClick(View view) {
                 if (mClickListener != null) {
-                    mClickListener.onItemClick(view, shop.getSid());
+                    mClickListener.onItemClick(view, shop);
                 }
             }
         });
@@ -74,7 +74,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder> 
 
     // parent activity will implement this method to respond to click events
     public interface MyItemClickListener {
-        void onItemClick(View view, String sid);
+        void onItemClick(View view, Shop shop);
     }
 
     public class MyViewHolder extends ViewHolder {

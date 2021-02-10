@@ -17,6 +17,7 @@ import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -35,9 +36,11 @@ public class ShopsFragment extends Fragment {
 
             adapterShop.setClickListener(new AdapterShop.MyItemClickListener() {
                 @Override
-                public void onItemClick(View view, String sid) {
+                public void onItemClick(View view, Shop shop) {
+                    Gson gson = new Gson();
                     Intent shopIntent = new Intent(getContext(), ShopBuyer.class);
-                    shopIntent.putExtra(ShopBuyer.SID, sid);
+                    String shopJson = gson.toJson(shop);
+                    shopIntent.putExtra(ShopBuyer.SHOP, shopJson);
                     startActivity(shopIntent);
                 }
             });

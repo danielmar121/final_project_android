@@ -1,5 +1,6 @@
 package com.daniel.final_project.activities.buyer.ui.shops;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,18 +14,20 @@ import com.daniel.final_project.interfaces.buyer.BuyerShopCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
+import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
+import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.UUID;
 
 public class ShopBuyer extends AppCompatActivity {
-    static final String SID = "SID";
+    static final String SHOP = "SHOP";
     MyFireBase myFireBase;
     ImageView buyer_shop_IMG_shop;
     RecyclerView buyer_shop_LST_products;
     ShopBuyer shopBuyer;
-    String sid;
+    Shop shop;
     Order order;
 
 
@@ -72,20 +75,26 @@ public class ShopBuyer extends AppCompatActivity {
     }
 
     private void openNewOrder() {
+        Gson gson = new Gson();
         UUID uuid = UUID.randomUUID();
         String oid = uuid.toString();
         String uid = myFireBase.getFirebaseUser().getUid();
-        sid = getIntent().getStringExtra(SID);
+
+        Intent intent = getIntent();
+
+        String shopJson = getIntent().getStringExtra(SHOP);
+        shop = gson.fromJson(shopJson, Shop.class);
 
         order = new Order()
                 .setOid(oid)
-                .setSid(sid)
+                .setSid(shop.getSid())
                 .setUid(uid)
-                .setOrderStatus("OPEN");
+                .setOrderStatus("OPEN")
+                .setShopName(shop.getName());
     }
 
     private void initViews() {
-        myFireBase.getProductsForShop(buyerShopCallBack, sid);
+        myFireBase.getProductsForShop(buyerShopCallBack, shop.getSid());
     }
 
     private void findViews() {

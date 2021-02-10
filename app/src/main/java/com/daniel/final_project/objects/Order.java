@@ -6,6 +6,7 @@ public class Order {
     private String oid = "";
     private String uid = "";
     private String sid = "";
+    private String shopName = "";
     private OrderStatuses orderStatus = OrderStatuses.OPEN;
 
     public Order() {
@@ -57,4 +58,12 @@ public class Order {
         return this;
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
+    public Order setShopName(String shopName) {
+        this.shopName = shopName;
+        return this;
+    }
 }

@@ -153,14 +153,14 @@ public class MyFireBase {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Product> products = new ArrayList<>();
+                List<Order> orders = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Product product = snapshot.getValue(Product.class);
-                    products.add(product);
+                    Order order = snapshot.getValue(Order.class);
+                    orders.add(order);
                 }
 
-                buyerOrderCallBack.putProductsInList(products);
+                buyerOrderCallBack.putOrdersInList(orders);
             }
 
             @Override
