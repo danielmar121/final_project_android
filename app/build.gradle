@@ -54,4 +54,8 @@ dependencies {
 
     //JSON
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Header and/or Footer in your RecyclerView
+    implementation 'com.mikhaellopez:hfrecyclerview-kotlin:1.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0"
 }

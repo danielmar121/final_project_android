@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/shops_buyer_header_LYT_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/orange_background"
+        android:focusableInTouchMode="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/shops_buyer_header_ETXTLYT_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/search"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:startIconDrawable="@drawable/ic_baseline_search">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/shops_buyer_header_ETXT_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="Meat"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/shops_buyer_header_IMG_advertise"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/shops_buyer_header_ETXTLYT_search"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="10dp"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:src="@drawable/vegetables" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
