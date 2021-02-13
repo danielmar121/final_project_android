@@ -1,8 +1,13 @@
 package com.daniel.final_project.activities;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +26,11 @@ import java.util.Arrays;
 
 public class LandingPageActivity extends AppCompatActivity {
     private final int RC_SIGN_IN = 1234;
-    MyFireBase myFireBase;
+    private final int ANIMATION_DURATION = 2000;
 
+    private MyFireBase myFireBase;
+    private FirebaseUser firebaseUser;
+    private ImageView landing_page_IMG_logo;
 
     private LandingPageCallBack landingPageCallBack = new LandingPageCallBack() {
         @Override
@@ -47,9 +55,56 @@ public class LandingPageActivity extends AppCompatActivity {
 
         myFireBase = MyFireBase.getInstance();
         myFireBase.setLandingPageCallBack(landingPageCallBack);
-        FirebaseUser firebaseUser = myFireBase.getFirebaseUser();
+        firebaseUser = myFireBase.getFirebaseUser();
 
+        findView();
 
+        startAnimation();
+    }
+
+    private void findView() {
+        landing_page_IMG_logo = findViewById(R.id.landing_page_IMG_logo);
+
+    }
+
+    private void startAnimation() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        View view = landing_page_IMG_logo;
+
+        view.setScaleX(0.0f);
+        view.setScaleY(0.0f);
+        view.setAlpha(0.0f);
+        view.animate()
+                .alpha(1.0f)
+                .scaleY(1.0f)
+                .scaleX(1.0f)
+                .rotation(360)
+                .translationY(0)
+                .setDuration(ANIMATION_DURATION)
+                .setInterpolator(new AccelerateInterpolator())
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        startApplication();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) {
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) {
+                    }
+                });
+    }
+
+    private void startApplication() {
         if (firebaseUser != null) {
             myFireBase.logInExistingUser();
         } else {
