@@ -19,7 +19,6 @@
         app:layout_constraintTop_toBottomOf="@+id/buyer_main_FRM_activity"
         app:menu="@menu/bottom_nav_menu_buyer" />
 
-
     <fragment
         android:id="@+id/buyer_main_FRM_activity"
         android:name="androidx.navigation.fragment.NavHostFragment"

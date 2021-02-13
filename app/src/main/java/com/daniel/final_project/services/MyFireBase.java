@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.daniel.final_project.interfaces.LandingPageCallBack;
+import com.daniel.final_project.interfaces.UserDetailsCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
@@ -227,5 +228,26 @@ public class MyFireBase {
     public void logOut() {
         auth.signOut();
         firebaseUser = auth.getCurrentUser();
+    }
+
+    public void getUser(UserDetailsCallBack userDetailsCallBack) {
+        if (firebaseUser == null) {
+            this.firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        DatabaseReference userRef = this.database.getReference("users").child(firebaseUser.getUid());
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                userDetailsCallBack.passUserDetails(user);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
     }
 }

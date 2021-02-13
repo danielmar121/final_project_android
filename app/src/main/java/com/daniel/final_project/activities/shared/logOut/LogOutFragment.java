@@ -1,4 +1,4 @@
-package com.daniel.final_project.activities.buyer.ui.logOut;
+package com.daniel.final_project.activities.shared.logOut;
 
 import android.content.Intent;
 import android.os.Bundle;
