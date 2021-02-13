@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_log_out_supplier"
-        android:name="com.daniel.final_project.activities.supplier.ui.logOut.LogOutFragment"
+        android:name="com.daniel.final_project.activities.shared.logOut.LogOutFragment"
         android:label="@string/log_out"
-        tools:layout="@layout/fragment_log_out_supplier" />
+        tools:layout="@layout/fragment_log_out_shared" />
 
     <fragment
         android:id="@+id/navigation_shop_supplier"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_profile_supplier"
-        android:name="com.daniel.final_project.activities.supplier.ui.profile.ProfileFragment"
+        android:name="com.daniel.final_project.activities.shared.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile_supplier" />
+        tools:layout="@layout/fragment_profile_shared" />
 </navigation>

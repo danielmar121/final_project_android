@@ -9,9 +9,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.daniel.final_project.R;
+import com.daniel.final_project.services.MyFireBase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BuyerMainActivity extends AppCompatActivity {
+    MyFireBase myFireBase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

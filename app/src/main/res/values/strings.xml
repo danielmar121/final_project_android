@@ -78,9 +78,22 @@
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
     <string name="shops">Shop</string>
+    <string name="search">Search</string>
+
+    //BUYER SHOP
+    <string name="plus_one">+1</string>
+    <string name="plus_ten">+10</string>
+    <string name="plus_hundred">+100</string>
+    <string name="plus_thousand">+1000</string>
+    <string name="units">Units:</string>
+    <string name="add_to_cart">Add to cart</string>
 
     //SUPPLIER MENU
     <string name="my_shop">My Shop</string>
-    <string name="search">Search</string>
+    <string name="order_status">Order status:</string>
+    <string name="products">Products</string>
+    <string name="price">Total price:</string>
+    <string name="price_sign">$</string>
+    <string name="delete">Delete</string>
 
 </resources>

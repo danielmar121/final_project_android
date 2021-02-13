@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey">
+
+        <TextView
+            android:id="@+id/product_order_buyer_LBL_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Product Name"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/product_order_buyer_LYT_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_order_buyer_LBL_name"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_units"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/units"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_units_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_toStartOf="@id/product_order_buyer_LBL_units"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/product_order_buyer_LBL_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_order_buyer_LYT_units"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_units_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_dup_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="x"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_price_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_equal_sing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="="
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_order_buyer_LBL_price_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/product_order_buyer_BTN_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:textSize="12dp"
+            android:textColor="@color/red"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            style="?attr/borderlessButtonStyle" />
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

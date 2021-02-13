@@ -76,4 +76,13 @@ public class Product {
         this.sid = sid;
         return this;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public Product setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
 }

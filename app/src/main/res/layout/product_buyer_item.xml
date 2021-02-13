@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="20dp"
+    android:elevation="6dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:id="@+id/product_item_LAY_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey">
+
+        <RelativeLayout
+            android:id="@+id/product_item_LAY_product_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/product_item_LAY_product_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/product_item_IMG_product"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/vegetables" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/product_item_LBL_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentLeft="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Product Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_item_LBL_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_item_LBL_name"
+                android:layout_alignParentLeft="true"
+                android:layout_toStartOf="@id/product_item_LAY_product_cover"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:text="Content When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny."
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_item_LAY_add_to_cart"
+            android:layout_below="@+id/product_item_LAY_product_data">
+
+            <TextView
+                android:id="@+id/product_item_LBL_dollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="$"
+                android:textColor="@color/orange_background" />
+
+            <TextView
+                android:id="@+id/product_item_LBL_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@id/product_item_LBL_dollar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/orange_background" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/product_item_LBL_dollar">
+
+                <Button
+                    android:id="@+id/product_item_BTN_plus_one"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus_one"
+                    android:textSize="15sp"
+                    android:textColor="@color/orange_background"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                <Button
+                    android:id="@+id/product_item_BTN_plus_ten"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus_ten"
+                    android:textSize="15sp"
+                    android:textColor="@color/orange_background"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                <Button
+                    android:id="@+id/product_item_BTN_plus_hundred"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus_hundred"
+                    android:textSize="15sp"
+                    android:textColor="@color/orange_background"
+                    style="?android:attr/borderlessButtonStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_alignParentEnd="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/product_item_LBL_units"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/units"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/product_item_LBL_units_to_buy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_toStartOf="@id/product_item_LBL_units"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="0"
+                        android:textColor="@color/orange_background" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/product_item_BTN_add_to_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_to_cart"
+                    android:textSize="15sp"
+                    android:textColor="@color/orange_background"
+                    app:strokeColor="@color/orange_background"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

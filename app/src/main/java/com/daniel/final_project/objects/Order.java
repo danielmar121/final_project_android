@@ -1,13 +1,13 @@
 package com.daniel.final_project.objects;
 
-import com.google.firebase.database.PropertyName;
+import com.daniel.final_project.utils.OrderStatuses;
 
 public class Order {
-
     private String oid = "";
     private String uid = "";
     private String sid = "";
-    private Boolean isOpen = true;
+    private String shopName = "";
+    private OrderStatuses orderStatus = OrderStatuses.OPEN;
 
     public Order() {
     }
@@ -39,14 +39,21 @@ public class Order {
         return this;
     }
 
-    @PropertyName("isOpen")
-    public Boolean isOpen() {
-        return isOpen;
+    public String getOrderStatus() {
+        return this.orderStatus.name();
     }
 
-    @PropertyName("isOpen")
-    public Order setOpen(Boolean open) {
-        this.isOpen = open;
+    public Order setOrderStatus(String orderStatus) {
+        this.orderStatus = OrderStatuses.valueOf(orderStatus);
+        return this;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public Order setShopName(String shopName) {
+        this.shopName = shopName;
         return this;
     }
 }
