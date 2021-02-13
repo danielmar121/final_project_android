@@ -15,6 +15,7 @@ import com.daniel.final_project.R;
 import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
+import com.daniel.final_project.utils.Constants;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class ShopsFragment extends Fragment {
                     Gson gson = new Gson();
                     Intent shopIntent = new Intent(getContext(), ShopBuyer.class);
                     String shopJson = gson.toJson(shop);
-                    shopIntent.putExtra(ShopBuyer.SHOP, shopJson);
+                    shopIntent.putExtra(Constants.SHOP, shopJson);
                     startActivity(shopIntent);
                 }
             });

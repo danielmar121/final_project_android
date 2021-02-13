@@ -1,6 +1,5 @@
 package com.daniel.final_project.activities.buyer.ui.shops;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,13 +15,13 @@ import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
+import com.daniel.final_project.utils.Constants;
 import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.UUID;
 
 public class ShopBuyer extends AppCompatActivity {
-    static final String SHOP = "SHOP";
     MyFireBase myFireBase;
     ImageView buyer_shop_IMG_shop;
     RecyclerView buyer_shop_LST_products;
@@ -80,9 +79,7 @@ public class ShopBuyer extends AppCompatActivity {
         String oid = uuid.toString();
         String uid = myFireBase.getFirebaseUser().getUid();
 
-        Intent intent = getIntent();
-
-        String shopJson = getIntent().getStringExtra(SHOP);
+        String shopJson = getIntent().getStringExtra(Constants.SHOP);
         shop = gson.fromJson(shopJson, Shop.class);
 
         order = new Order()

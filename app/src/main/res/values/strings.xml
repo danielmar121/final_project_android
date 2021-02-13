@@ -91,5 +91,9 @@
     //SUPPLIER MENU
     <string name="my_shop">My Shop</string>
     <string name="order_status">Order status:</string>
+    <string name="products">Products</string>
+    <string name="price">Total price:</string>
+    <string name="price_sign">$</string>
+    <string name="delete">Delete</string>
 
 </resources>

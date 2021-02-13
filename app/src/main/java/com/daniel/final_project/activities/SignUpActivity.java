@@ -15,12 +15,11 @@ import com.daniel.final_project.services.MyFireBase;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
-    MyFireBase myFireBase;
-    FirebaseUser firebaseUser;
-    Button sign_up_BTN_sign_up;
-    EditText sign_up_ETXT_first_name, sign_up_ETXT_last_name, sign_up_ETXT_email, sign_up_ETXT_phone;
-    CheckBox sign_up_CKB_supplier;
-    private User user;
+    private MyFireBase myFireBase;
+    private FirebaseUser firebaseUser;
+    private Button sign_up_BTN_sign_up;
+    private EditText sign_up_ETXT_first_name, sign_up_ETXT_last_name, sign_up_ETXT_email, sign_up_ETXT_phone;
+    private CheckBox sign_up_CKB_supplier;
 
 
     @Override
@@ -47,12 +46,12 @@ public class SignUpActivity extends AppCompatActivity {
         sign_up_BTN_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateUserSign();
+                updateUserSign();
             }
         });
     }
 
-    private void UpdateUserSign() {
+    private void updateUserSign() {
         String firstName = sign_up_ETXT_first_name.getText().toString();
         String lastName = sign_up_ETXT_last_name.getText().toString();
         String email = sign_up_ETXT_email.getText().toString();

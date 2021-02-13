@@ -1,7 +1,7 @@
 package com.daniel.final_project.activities.buyer.ui.cart;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import com.daniel.final_project.R;
 import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.services.MyFireBase;
+import com.daniel.final_project.utils.Constants;
 
 import java.util.List;
 
@@ -35,7 +36,9 @@ public class CartFragment extends Fragment {
             adapterOrder.setClickListener(new AdapterOrder.MyItemClickListener() {
                 @Override
                 public void openOrderDetails(View view, Order order) {
-                    Log.d("openOrderDetails", "openOrderDetails");
+                    Intent shopIntent = new Intent(getContext(), ProductsOrderBuyer.class);
+                    shopIntent.putExtra(Constants.ORDER_ID, order.getOid());
+                    startActivity(shopIntent);
                 }
             });
 

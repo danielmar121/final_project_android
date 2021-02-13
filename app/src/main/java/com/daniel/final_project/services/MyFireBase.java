@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.daniel.final_project.interfaces.LandingPageCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
+import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerShopCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Order;
@@ -28,13 +30,15 @@ public class MyFireBase {
 
     private static MyFireBase instance;
     private FirebaseDatabase database;
+    private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private DatabaseReference myRef;
     private LandingPageCallBack landingPageCallBack;
 
     private MyFireBase(Context context) {
         database = FirebaseDatabase.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        firebaseUser = auth.getCurrentUser();
     }
 
     public static void init(Context context) {
@@ -157,7 +161,8 @@ public class MyFireBase {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Order order = snapshot.getValue(Order.class);
-                    orders.add(order);
+                    if (order.getOrderStatus().matches("OPEN"))
+                        orders.add(order);
                 }
 
                 buyerOrderCallBack.putOrdersInList(orders);
@@ -168,5 +173,59 @@ public class MyFireBase {
                 Log.w("logInExistingUser", "Failed to read value.", error.toException());
             }
         });
+    }
+
+    public void getProduct(BuyerProductOrderItemCallBack buyerProductOrderItemCallBack, String pid) {
+        DatabaseReference productRef = this.database.getReference("products").child(pid);
+
+        productRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Product product = dataSnapshot.getValue(Product.class);
+                buyerProductOrderItemCallBack.putProductDetailsInItem(product);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void getProductOrders(BuyerProductOrderCallBack buyerProductOrderCallBack, String oid) {
+        Query productsRef = this.database.getReference("productOrder").orderByChild("oid").equalTo(oid);
+
+        productsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<ProductOrder> productOrders = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ProductOrder productOrder = snapshot.getValue(ProductOrder.class);
+                    productOrders.add(productOrder);
+                }
+
+                buyerProductOrderCallBack.putProductOrdersInList(productOrders);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void deleteProductOrder(String productOrderId) {
+        DatabaseReference productOrderRef = this.database.getReference("productOrder").child(productOrderId);
+        productOrderRef.removeValue();
+    }
+
+    public void updateOrderStatus(String oid, String status) {
+        this.database.getReference("orders").child(oid).child("orderStatus").setValue(status);
+    }
+
+    public void logOut() {
+        auth.signOut();
+        firebaseUser = auth.getCurrentUser();
     }
 }

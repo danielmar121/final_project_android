@@ -49,7 +49,6 @@ public class AdapterShop extends HFRecyclerView<Shop> {
     @Override
     protected RecyclerView.ViewHolder getFooterView(LayoutInflater inflater, ViewGroup parent) {
         return null;
-        // return new FooterViewHolder(inflater.inflate(R.layout.item_footer, parent, false));
     }
 
     // allows clicks events to be caught
