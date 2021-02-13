@@ -40,21 +40,11 @@ public class Order {
     }
 
     public String getOrderStatus() {
-        // Convert enum to string
-        if (orderStatus == null) {
-            return null;
-        } else {
-            return orderStatus.name();
-        }
+        return this.orderStatus.name();
     }
 
     public Order setOrderStatus(String orderStatus) {
-        // Get enum from string
-        if (orderStatus == null) {
-            this.orderStatus = null;
-        } else {
-            this.orderStatus = OrderStatuses.valueOf(orderStatus);
-        }
+        this.orderStatus = OrderStatuses.valueOf(orderStatus);
         return this;
     }
 
