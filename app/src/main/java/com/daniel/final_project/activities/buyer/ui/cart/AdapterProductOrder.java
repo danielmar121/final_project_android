@@ -47,22 +47,24 @@ public class AdapterProductOrder extends RecyclerView.Adapter<AdapterProductOrde
         BuyerProductOrderItemCallBack buyerProductOrderItemCallBack = new BuyerProductOrderItemCallBack() {
             @Override
             public void putProductDetailsInItem(Product product) {
-                holder.product_order_buyer_LBL_name.setText(product.getName());
-                holder.product_order_buyer_LBL_price_unit.setText("" + product.getPrice());
+                if (product != null) {
+                    holder.product_order_buyer_LBL_name.setText(product.getName());
+                    holder.product_order_buyer_LBL_price_unit.setText("" + product.getPrice());
 
-                Double totalPrice = productOrder.getQuantity() * product.getPrice();
-                holder.product_order_buyer_LBL_price_total.setText(totalPrice.toString());
+                    Double totalPrice = productOrder.getQuantity() * product.getPrice();
+                    holder.product_order_buyer_LBL_price_total.setText(totalPrice.toString());
 
-                buyerProductOrderPriceCallBack.raisePrice(totalPrice);
-                holder.product_order_buyer_BTN_delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (mClickListener != null) {
-                            buyerProductOrderPriceCallBack.decreasePrice(totalPrice);
-                            mClickListener.onDeleteClick(view, productOrder);
+                    buyerProductOrderPriceCallBack.raisePrice(totalPrice);
+                    holder.product_order_buyer_BTN_delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (mClickListener != null) {
+                                buyerProductOrderPriceCallBack.decreasePrice(totalPrice);
+                                mClickListener.onDeleteClick(view, productOrder);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         };
 
