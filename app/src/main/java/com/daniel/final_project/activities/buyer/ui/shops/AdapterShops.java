@@ -15,10 +15,10 @@ import com.daniel.final_project.objects.Shop;
 import com.google.android.material.textfield.TextInputEditText;
 import com.mikhaellopez.hfrecyclerviewkotlin.HFRecyclerView;
 
-public class AdapterShop extends HFRecyclerView<Shop> {
+public class AdapterShops extends HFRecyclerView<Shop> {
     private MyItemClickListener mClickListener;
 
-    public AdapterShop() {
+    public AdapterShops() {
         // With Header & With Footer
         super(true, false);
     }
