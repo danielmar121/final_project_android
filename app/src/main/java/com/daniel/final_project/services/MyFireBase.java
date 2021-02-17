@@ -4,11 +4,12 @@ import android.content.Context;
 import android.util.Log;
 
 import com.daniel.final_project.interfaces.LandingPageCallBack;
+import com.daniel.final_project.interfaces.ObjectCallBack;
+import com.daniel.final_project.interfaces.ObjectsCallBack;
 import com.daniel.final_project.interfaces.UserDetailsCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
-import com.daniel.final_project.interfaces.buyer.BuyerShopCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
@@ -129,20 +130,20 @@ public class MyFireBase {
         });
     }
 
-    public void getProductsForShop(BuyerShopCallBack buyerShopCallBack, String sid) {
+    public void getProductsForShop(ObjectsCallBack objectsCallBack, String sid) {
         Query productsRef = this.database.getReference("products").orderByChild("sid").equalTo(sid);
 
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Product> products = new ArrayList<>();
+                List<Object> products = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Product product = snapshot.getValue(Product.class);
                     products.add(product);
                 }
 
-                buyerShopCallBack.putProductsInList(products);
+                objectsCallBack.sendObjectsToActivity(products);
             }
 
             @Override
@@ -221,6 +222,11 @@ public class MyFireBase {
         productOrderRef.removeValue();
     }
 
+    public void deleteProduct(String pid) {
+        DatabaseReference productRef = this.database.getReference("products").child(pid);
+        productRef.removeValue();
+    }
+
     public void updateOrderStatus(String oid, String status) {
         this.database.getReference("orders").child(oid).child("orderStatus").setValue(status);
     }
@@ -242,6 +248,26 @@ public class MyFireBase {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 userDetailsCallBack.passUserDetails(user);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void getShop(String uid, ObjectCallBack objectCallBack) {
+        Query productsRef = this.database.getReference("shops").orderByChild("uid").equalTo(uid);
+
+        productsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Shop shop = snapshot.getValue(Shop.class);
+                    objectCallBack.sendObjectToActivity(shop);
+                    return;
+                }
             }
 
             @Override
