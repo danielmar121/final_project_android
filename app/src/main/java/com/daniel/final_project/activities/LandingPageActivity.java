@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.daniel.final_project.R;
 import com.daniel.final_project.activities.buyer.BuyerMainActivity;
 import com.daniel.final_project.activities.supplier.SupplierMainActivity;
+import com.daniel.final_project.activities.supplier.SupplierSignUpActivity;
 import com.daniel.final_project.interfaces.LandingPageCallBack;
+import com.daniel.final_project.objects.User;
 import com.daniel.final_project.services.MyFireBase;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
@@ -34,16 +36,27 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private LandingPageCallBack landingPageCallBack = new LandingPageCallBack() {
         @Override
-        public void openMainActivity(Boolean isSupplier) {
-            Intent myIntent;
+        public void openMainActivity(User user) {
+            Intent mainActivityIntent;
 
-            if (isSupplier) {
-                myIntent = new Intent(getApplicationContext(), SupplierMainActivity.class);
+            if (user.getSupplier()) {
+                if (user.isSignUp()) {
+                    mainActivityIntent = new Intent(getApplicationContext(), SupplierMainActivity.class);
+                } else {
+                    mainActivityIntent = new Intent(getApplicationContext(), SupplierSignUpActivity.class);
+                }
             } else {
-                myIntent = new Intent(getApplicationContext(), BuyerMainActivity.class);
+                mainActivityIntent = new Intent(getApplicationContext(), BuyerMainActivity.class);
             }
 
-            startActivity(myIntent);
+            startActivity(mainActivityIntent);
+            finish();
+        }
+
+        @Override
+        public void openSignUpFlow() {
+            Intent signUpIntent = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivity(signUpIntent);
             finish();
         }
     };
@@ -54,7 +67,6 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
 
         myFireBase = MyFireBase.getInstance();
-        myFireBase.setLandingPageCallBack(landingPageCallBack);
         firebaseUser = myFireBase.getFirebaseUser();
 
         findView();
@@ -86,7 +98,6 @@ public class LandingPageActivity extends AppCompatActivity {
                 .setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animator) {
-
                     }
 
                     @Override
@@ -106,7 +117,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private void startApplication() {
         if (firebaseUser != null) {
-            myFireBase.logInExistingUser();
+            myFireBase.logInExistingUser(landingPageCallBack);
         } else {
             startLoginMethod();
         }
@@ -134,10 +145,9 @@ public class LandingPageActivity extends AppCompatActivity {
         // RC_SIGN_IN is the request code you passed into startActivityForResult(...) when starting the sign in flow.
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
-
             // Successfully signed in
             if (resultCode == RESULT_OK) {
-                myFireBase.logInExistingUser();
+                myFireBase.logInExistingUser(landingPageCallBack);
             } else {
                 // Sign in failed
                 if (response == null) {

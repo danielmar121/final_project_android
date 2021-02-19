@@ -15,36 +15,24 @@
         android:layout_marginTop="40dp" />
 
     <TextView
-        android:id="@+id/sign_up_ETXT_app_name"
+        android:id="@+id/sign_up_LBL_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sign_up_IMG_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/supplier"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="30dp" />
 
-    <TextView
-        android:id="@+id/sign_up_ETXT_page_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_up_ETXT_app_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/sign_up"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/sign_up_ETXT_page_name">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/sign_up_LBL_sign_up">
 
             <EditText
                 android:id="@+id/sign_up_ETXT_first_name"
@@ -112,17 +100,30 @@
                 android:text="@string/supplier"
                 android:buttonTint="@color/black" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/sign_up_BTN_sign_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:textColor="@color/white"
-                android:text="@string/sign_up"
-                android:background="@drawable/circle_corners_button"
-                android:layout_gravity="center" />
+
         </LinearLayout>
-    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/shared_profile_LYT_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_up_BTN_sign_up"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_corners_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
 </RelativeLayout>

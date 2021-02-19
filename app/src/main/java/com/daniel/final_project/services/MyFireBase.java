@@ -35,7 +35,6 @@ public class MyFireBase {
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private DatabaseReference myRef;
-    private LandingPageCallBack landingPageCallBack;
 
     private MyFireBase(Context context) {
         database = FirebaseDatabase.getInstance();
@@ -57,11 +56,7 @@ public class MyFireBase {
         return firebaseUser;
     }
 
-    public void setLandingPageCallBack(LandingPageCallBack landingPageCallBack) {
-        this.landingPageCallBack = landingPageCallBack;
-    }
-
-    public void logInExistingUser() {
+    public void logInExistingUser(LandingPageCallBack landingPageCallBack) {
         if (firebaseUser == null) {
             this.firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         }
@@ -72,7 +67,11 @@ public class MyFireBase {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                landingPageCallBack.openMainActivity(user.getSupplier());
+                if(user != null){
+                    landingPageCallBack.openMainActivity(user);
+                }else{
+                    landingPageCallBack.openSignUpFlow();
+                }
             }
 
             @Override

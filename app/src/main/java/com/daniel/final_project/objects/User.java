@@ -1,5 +1,7 @@
 package com.daniel.final_project.objects;
 
+import com.google.firebase.database.PropertyName;
+
 public class User {
     private String uid = "";
     private String firstName = "";
@@ -8,6 +10,7 @@ public class User {
     private String email = "";
     private String favoriteShops = "";
     private Boolean supplier = false;
+    private Boolean isSignUp = false;
 
     public User() {
     }
@@ -72,6 +75,17 @@ public class User {
 
     public User setSupplier(boolean supplier) {
         this.supplier = supplier;
+        return this;
+    }
+
+    @PropertyName("isSignUp")
+    public Boolean isSignUp() {
+        return isSignUp;
+    }
+
+    @PropertyName("isSignUp")
+    public User setSignUp(Boolean isSignUp) {
+        this.isSignUp = isSignUp;
         return this;
     }
 }
