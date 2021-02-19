@@ -29,6 +29,7 @@
 
         <activity android:name=".activities.supplier.SupplierMainActivity" />
         <activity android:name=".activities.supplier.SupplierSignUpActivity" />
+        <activity android:name=".activities.supplier.SupplierAddingProductActivity" />
         <activity android:name=".activities.MainActivity" />
     </application>
 </manifest>

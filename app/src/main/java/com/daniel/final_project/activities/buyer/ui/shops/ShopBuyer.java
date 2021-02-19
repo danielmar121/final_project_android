@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.buyer.BuyerShopCallBack;
+import com.daniel.final_project.interfaces.ObjectsCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
@@ -29,10 +29,10 @@ public class ShopBuyer extends AppCompatActivity {
     Shop shop;
     Order order;
 
-
-    private BuyerShopCallBack buyerShopCallBack = new BuyerShopCallBack() {
+    private ObjectsCallBack objectsCallBack = new ObjectsCallBack() {
         @Override
-        public void putProductsInList(List<Product> products) {
+        public void sendObjectsToActivity(List<Object> objects) {
+            List<Product> products = (List<Product>) (List<?>) objects;
             AdapterProduct adapterProduct = new AdapterProduct(shopBuyer, products);
 
             adapterProduct.setClickListener(new AdapterProduct.MyItemClickListener() {
@@ -91,7 +91,7 @@ public class ShopBuyer extends AppCompatActivity {
     }
 
     private void initViews() {
-        myFireBase.getProductsForShop(buyerShopCallBack, shop.getSid());
+        myFireBase.getProductsForShop(objectsCallBack, shop.getSid());
     }
 
     private void findViews() {

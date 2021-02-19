@@ -29,9 +29,9 @@ public class ShopsFragment extends Fragment {
     private BuyerShopsCallBack buyerShopsCallBack = new BuyerShopsCallBack() {
         @Override
         public void putShopsInList(List<Shop> shops) {
-            AdapterShop adapterShop = new AdapterShop();
+            AdapterShops adapterShop = new AdapterShops();
 
-            adapterShop.setClickListener(new AdapterShop.MyItemClickListener() {
+            adapterShop.setClickListener(new AdapterShops.MyItemClickListener() {
                 @Override
                 public void onItemClick(View view, Shop shop) {
                     Gson gson = new Gson();

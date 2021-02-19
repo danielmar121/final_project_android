@@ -95,5 +95,6 @@
     <string name="price">Total price:</string>
     <string name="price_sign">$</string>
     <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
 </resources>
