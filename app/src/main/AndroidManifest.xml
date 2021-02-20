@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project">
 
-        <activity android:name=".activities.LandingPageActivity">
+        <activity
+            android:name=".activities.LandingPageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,14 +25,29 @@
         </activity>
         <activity android:name=".activities.SignUpActivity" />
 
-        <activity android:name=".activities.buyer.BuyerMainActivity" />
-        <activity android:name=".activities.buyer.ui.cart.ProductsOrderBuyer" />
-        <activity android:name=".activities.buyer.ui.cart.BuyerPaymentActivity" />
-        <activity android:name=".activities.buyer.ui.shops.ShopBuyer" />
+        <activity
+            android:name=".activities.buyer.BuyerMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.buyer.ui.cart.BuyerPaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.buyer.ui.shops.ShopBuyer"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".activities.supplier.SupplierMainActivity" />
-        <activity android:name=".activities.supplier.SupplierSignUpActivity" />
-        <activity android:name=".activities.supplier.SupplierAddingProductActivity" />
-        <activity android:name=".activities.MainActivity" />
+        <activity
+            android:name=".activities.supplier.SupplierMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.supplier.SupplierSignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.supplier.SupplierAddingProductActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.shared.orders.ProductsOrderActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

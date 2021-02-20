@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/supplier_sign_up_LYT_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,26 +16,15 @@
         android:src="@drawable/vegetables" />
 
     <TextView
-        android:id="@+id/supplier_sign_up_ETXT_app_name"
+        android:id="@+id/supplier_sign_up_ETXT_page_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/supplier_sign_up_IMG_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/supplier"
+        android:text="@string/shop_details"
         android:textColor="@color/white"
         android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/supplier_sign_up_ETXT_page_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/supplier_sign_up_ETXT_app_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/supplier_sign_up_page"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -96,8 +86,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
-                android:gravity="center_vertical"
                 android:background="@drawable/circle_corners_edit_text"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -113,34 +103,42 @@
 
             </LinearLayout>
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/supplier_sign_up_BTN_upload_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
-                android:drawablePadding="15dp"
                 android:background="@drawable/circle_corners_button_login"
                 android:drawableStart="@drawable/photo"
+                android:drawablePadding="15dp"
                 android:padding="15dp"
-                android:text="@string/upload"
-                android:layout_gravity="center" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/supplier_sign_up_BTN_open_store"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/circle_corners_button"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:text="@string/done_supplier_sign_up"
-                android:textColor="@color/white" />
+                android:text="@string/upload" />
 
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/supplier_sign_up_LYT_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/supplier_sign_up_BTN_open_store"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity=""
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/done_supplier_sign_up"
+            app:backgroundTint="@color/dark_green_500"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
 </RelativeLayout>

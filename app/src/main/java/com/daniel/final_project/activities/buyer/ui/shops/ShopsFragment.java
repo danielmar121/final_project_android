@@ -22,9 +22,9 @@ import java.util.List;
 
 public class ShopsFragment extends Fragment {
 
-    View root;
-    MyFireBase myFireBase;
-    RecyclerView buyer_shops_LST_shops;
+    private View root;
+    private MyFireBase myFireBase;
+    private RecyclerView buyer_shops_LST_shops;
 
     private BuyerShopsCallBack buyerShopsCallBack = new BuyerShopsCallBack() {
         @Override

@@ -18,7 +18,7 @@ import com.daniel.final_project.utils.Constants;
 public class BuyerPaymentActivity extends AppCompatActivity {
     private EditText buyer_payment_ETXT_address, buyer_payment_ETXT_id, buyer_payment_ETXT_full_name, buyer_payment_ETXT_credit_card, buyer_payment_ETXT_cvv;
     private Spinner buyer_payment_SPN_year, buyer_payment_SPN_month;
-    private Button buyer_payment_BTN_pay;
+    private Button buyer_payment_BTN_pay, buyer_payment_BTN_cancel;
     private String oid;
     private MyFireBase myFireBase;
 
@@ -45,8 +45,6 @@ public class BuyerPaymentActivity extends AppCompatActivity {
         buyer_payment_SPN_month.setAdapter(monthAdapter);
 
         buyer_payment_BTN_pay.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
                 boolean isPayed = pay();
@@ -56,9 +54,37 @@ public class BuyerPaymentActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(BuyerPaymentActivity.this, "Payment failed", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
+
+        buyer_payment_BTN_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void findViews() {
+        buyer_payment_ETXT_address = findViewById(R.id.buyer_payment_ETXT_address);
+        buyer_payment_ETXT_id = findViewById(R.id.buyer_payment_ETXT_id);
+        buyer_payment_ETXT_full_name = findViewById(R.id.buyer_payment_ETXT_full_name);
+        buyer_payment_ETXT_credit_card = findViewById(R.id.buyer_payment_ETXT_credit_card);
+        buyer_payment_ETXT_cvv = findViewById(R.id.buyer_payment_ETXT_cvv);
+
+        buyer_payment_SPN_year = findViewById(R.id.buyer_payment_SPN_year);
+        buyer_payment_SPN_month = findViewById(R.id.buyer_payment_SPN_month);
+
+        buyer_payment_BTN_pay = findViewById(R.id.buyer_payment_BTN_pay);
+        buyer_payment_BTN_cancel = findViewById(R.id.buyer_payment_BTN_cancel);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     // We are not preforming paying in the application
@@ -76,15 +102,5 @@ public class BuyerPaymentActivity extends AppCompatActivity {
         }
     }
 
-    private void findViews() {
-        buyer_payment_ETXT_address = findViewById(R.id.buyer_payment_ETXT_address);
-        buyer_payment_ETXT_id = findViewById(R.id.buyer_payment_ETXT_id);
-        buyer_payment_ETXT_full_name = findViewById(R.id.buyer_payment_ETXT_full_name);
-        buyer_payment_ETXT_credit_card = findViewById(R.id.buyer_payment_ETXT_credit_card);
-        buyer_payment_ETXT_cvv = findViewById(R.id.buyer_payment_ETXT_cvv);
 
-        buyer_payment_SPN_year = findViewById(R.id.buyer_payment_SPN_year);
-        buyer_payment_SPN_month = findViewById(R.id.buyer_payment_SPN_month);
-        buyer_payment_BTN_pay = findViewById(R.id.buyer_payment_BTN_pay);
-    }
 }

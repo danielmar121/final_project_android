@@ -113,6 +113,8 @@ public class AdapterShop extends HFRecyclerView<Product> {
         void bind(Product product) {
             product_supplier_item_LBL_name.setText(product.getName());
             product_supplier_item_LBL_description.setText(product.getDescription());
+            product_supplier_item_LBL_price.setText("" + product.getPrice());
+            product_supplier_item_LBL_units_to_sell.setText("" + product.getQuantity());
             Glide
                     .with(itemView.getContext())
                     .load(product.getImageUrl())

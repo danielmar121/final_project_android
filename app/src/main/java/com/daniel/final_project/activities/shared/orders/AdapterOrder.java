@@ -1,10 +1,11 @@
-package com.daniel.final_project.activities.buyer.ui.cart;
+package com.daniel.final_project.activities.shared.orders;
 
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
     // inflates the row layout from xml when needed
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.order_buyer_item, parent, false);
+        View view = mInflater.inflate(R.layout.order_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -45,6 +46,15 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
             public void onClick(View view) {
                 if (mClickListener != null) {
                     mClickListener.openOrderDetails(view, order);
+                }
+            }
+        });
+
+        holder.order_item_BTN_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mClickListener != null) {
+                    mClickListener.deleteOrder(order);
                 }
             }
         });
@@ -69,11 +79,14 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
     // parent activity will implement this method to respond to click events
     public interface MyItemClickListener {
         void openOrderDetails(View view, Order order);
+
+        void deleteOrder(Order order);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView order_item_LBL_shop_name, order_item_LBL_status;
         RelativeLayout order_item_LAY_main;
+        Button order_item_BTN_delete;
 
         MyViewHolder(View itemView) {
             super(itemView);
@@ -81,6 +94,8 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
             order_item_LBL_status = itemView.findViewById(R.id.order_item_LBL_status);
 
             order_item_LAY_main = itemView.findViewById(R.id.order_item_LAY_main);
+
+            order_item_BTN_delete = itemView.findViewById(R.id.order_item_BTN_delete);
         }
     }
 

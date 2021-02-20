@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="20dp"
     android:elevation="6dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="6dp">
 
     <RelativeLayout
@@ -13,19 +13,31 @@
         android:layout_height="wrap_content"
         android:background="@color/grey">
 
-        <RelativeLayout
-            android:id="@+id/shop_buyer_LAY_cover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/shop_buyer_CARD_cover"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:background="@color/grey"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp">
 
             <ImageView
                 android:id="@+id/shop_buyer_IMG_cover"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/vegetables" />
-        </RelativeLayout>
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/vegetables"></ImageView>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/shop_buyer_LBL_name"
@@ -33,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:layout_toEndOf="@id/shop_buyer_LAY_cover"
+            android:layout_toEndOf="@id/shop_buyer_CARD_cover"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Shop Name"
@@ -44,11 +56,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shop_buyer_LBL_name"
-            android:layout_toEndOf="@id/shop_buyer_LAY_cover"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="12dp"
+            android:layout_toEndOf="@id/shop_buyer_CARD_cover"
             android:ellipsize="end"
             android:maxLines="5"
             android:text="Content When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny."

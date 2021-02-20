@@ -71,6 +71,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         findView();
 
+        startApplication();
         startAnimation();
     }
 
@@ -102,7 +103,6 @@ public class LandingPageActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        startApplication();
                     }
 
                     @Override

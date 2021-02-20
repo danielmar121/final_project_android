@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_cart_buyer"
-        android:name="com.daniel.final_project.activities.buyer.ui.cart.CartFragment"
+        android:name="com.daniel.final_project.activities.shared.orders.OrdersFragment"
         android:label="@string/cart"
-        tools:layout="@layout/fragment_cart_buyer" />
+        tools:layout="@layout/fragment_orders_shared" />
 
     <fragment
         android:id="@+id/navigation_shops_buyer"

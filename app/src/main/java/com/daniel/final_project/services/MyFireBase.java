@@ -6,8 +6,6 @@ import android.util.Log;
 import com.daniel.final_project.interfaces.LandingPageCallBack;
 import com.daniel.final_project.interfaces.ObjectCallBack;
 import com.daniel.final_project.interfaces.ObjectsCallBack;
-import com.daniel.final_project.interfaces.UserDetailsCallBack;
-import com.daniel.final_project.interfaces.buyer.BuyerOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
@@ -67,9 +65,9 @@ public class MyFireBase {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if(user != null){
+                if (user != null) {
                     landingPageCallBack.openMainActivity(user);
-                }else{
+                } else {
                     landingPageCallBack.openSignUpFlow();
                 }
             }
@@ -152,30 +150,6 @@ public class MyFireBase {
         });
     }
 
-    public void getOpenOrders(BuyerOrderCallBack buyerOrderCallBack, String uid) {
-        Query productsRef = this.database.getReference("orders").orderByChild("uid").equalTo(uid);
-
-        productsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Order> orders = new ArrayList<>();
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Order order = snapshot.getValue(Order.class);
-                    if (order.getOrderStatus().matches("OPEN"))
-                        orders.add(order);
-                }
-
-                buyerOrderCallBack.putOrdersInList(orders);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
-            }
-        });
-    }
-
     public void getProduct(BuyerProductOrderItemCallBack buyerProductOrderItemCallBack, String pid) {
         DatabaseReference productRef = this.database.getReference("products").child(pid);
 
@@ -226,6 +200,11 @@ public class MyFireBase {
         productRef.removeValue();
     }
 
+    public void deleteOrder(String oid) {
+        DatabaseReference productRef = this.database.getReference("orders").child(oid);
+        productRef.removeValue();
+    }
+
     public void updateOrderStatus(String oid, String status) {
         this.database.getReference("orders").child(oid).child("orderStatus").setValue(status);
     }
@@ -235,7 +214,7 @@ public class MyFireBase {
         firebaseUser = auth.getCurrentUser();
     }
 
-    public void getUser(UserDetailsCallBack userDetailsCallBack) {
+    public void getUser(ObjectCallBack objectCallBack) {
         if (firebaseUser == null) {
             this.firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         }
@@ -246,7 +225,7 @@ public class MyFireBase {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                userDetailsCallBack.passUserDetails(user);
+                objectCallBack.sendObjectToActivity(user);
             }
 
             @Override
@@ -267,6 +246,30 @@ public class MyFireBase {
                     objectCallBack.sendObjectToActivity(shop);
                     return;
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void getOrders(ObjectsCallBack objectsCallBack, String id, String search, String orderStatus) {
+        Query productsRef = this.database.getReference("orders").orderByChild(search).equalTo(id);
+
+        productsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Object> orders = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Order order = snapshot.getValue(Order.class);
+                    if (order.getOrderStatus().matches(orderStatus))
+                        orders.add(order);
+                }
+
+                objectsCallBack.sendObjectsToActivity(orders);
             }
 
             @Override

@@ -7,7 +7,7 @@
     android:focusableInTouchMode="true">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/buyer_cart_LST_orders"
+        android:id="@+id/shared_orders_LST_orders"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

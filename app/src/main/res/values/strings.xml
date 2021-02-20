@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">final_project</string>
+    <string name="app_name">Sup Buyer</string>
 
     // LOGIN + SIGN-UP PAGE
     <string name="email">Email</string>
@@ -12,7 +12,7 @@
     <string name="sign_up">SIGN UP</string>
     <string name="sign_in">SIGN IN</string>
     <string name="supplier">Supplier</string>
-    <string name="supplier_sign_up_page">Supplier Details</string>
+    <string name="shop_details">Shop Details</string>
     <string name="phone">Phone Number</string>
 
     //SUPPLIER SIGN UP PAGE
@@ -96,5 +96,6 @@
     <string name="price_sign">$</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="orders">Orders</string>
 
 </resources>

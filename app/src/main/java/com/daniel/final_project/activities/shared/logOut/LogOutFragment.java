@@ -13,9 +13,7 @@ import com.daniel.final_project.activities.LandingPageActivity;
 import com.daniel.final_project.services.MyFireBase;
 
 public class LogOutFragment extends Fragment {
-
-    View root;
-    MyFireBase myFireBase;
+    private MyFireBase myFireBase;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +23,6 @@ public class LogOutFragment extends Fragment {
         getActivity().finish();
         Intent landingPageIntent = new Intent(getContext(), LandingPageActivity.class);
         startActivity(landingPageIntent);
-        return root;
+        return null;
     }
 }

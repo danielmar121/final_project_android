@@ -9,7 +9,7 @@
         android:background="@color/grey">
 
         <TextView
-            android:id="@+id/product_order_buyer_LBL_name"
+            android:id="@+id/product_order_shared_LBL_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -20,14 +20,14 @@
             android:textColor="@color/black" />
 
         <LinearLayout
-            android:id="@+id/product_order_buyer_LYT_units"
+            android:id="@+id/product_order_shared_LYT_units"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/product_order_buyer_LBL_name"
+            android:layout_below="@+id/product_order_shared_LBL_name"
             android:layout_marginStart="12dp">
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_units"
+                android:id="@+id/product_order_shared_LBL_units"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -36,11 +36,11 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_units_amount"
+                android:id="@+id/product_order_shared_LBL_units_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:layout_toStartOf="@id/product_order_buyer_LBL_units"
+                android:layout_toStartOf="@id/product_order_shared_LBL_units"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="0"
@@ -48,15 +48,15 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/product_order_buyer_LBL_total_price"
+            android:id="@+id/product_order_shared_LBL_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/product_order_buyer_LYT_units"
+            android:layout_below="@+id/product_order_shared_LYT_units"
             android:layout_marginHorizontal="12dp"
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_units_total"
+                android:id="@+id/product_order_shared_LBL_units_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -65,7 +65,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_dup_sign"
+                android:id="@+id/product_order_shared_LBL_dup_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
@@ -75,7 +75,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_price_unit"
+                android:id="@+id/product_order_shared_LBL_price_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -84,7 +84,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_equal_sing"
+                android:id="@+id/product_order_shared_LBL_equal_sing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
@@ -94,7 +94,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/product_order_buyer_LBL_price_total"
+                android:id="@+id/product_order_shared_LBL_price_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -104,7 +104,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/product_order_buyer_BTN_delete"
+            android:id="@+id/product_order_shared_BTN_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/delete"

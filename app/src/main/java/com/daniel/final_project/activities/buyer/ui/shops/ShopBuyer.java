@@ -2,7 +2,6 @@ package com.daniel.final_project.activities.buyer.ui.shops;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,18 +21,17 @@ import java.util.List;
 import java.util.UUID;
 
 public class ShopBuyer extends AppCompatActivity {
-    MyFireBase myFireBase;
-    ImageView buyer_shop_IMG_shop;
-    RecyclerView buyer_shop_LST_products;
-    ShopBuyer shopBuyer;
-    Shop shop;
-    Order order;
+    private MyFireBase myFireBase;
+    private RecyclerView buyer_shop_LST_products;
+    private ShopBuyer shopBuyer;
+    private Shop shop;
+    private Order order;
 
     private ObjectsCallBack objectsCallBack = new ObjectsCallBack() {
         @Override
         public void sendObjectsToActivity(List<Object> objects) {
             List<Product> products = (List<Product>) (List<?>) objects;
-            AdapterProduct adapterProduct = new AdapterProduct(shopBuyer, products);
+            AdapterProduct adapterProduct = new AdapterProduct();
 
             adapterProduct.setClickListener(new AdapterProduct.MyItemClickListener() {
 
@@ -55,6 +53,8 @@ public class ShopBuyer extends AppCompatActivity {
                 }
             });
 
+            adapterProduct.setData(products);
+            adapterProduct.setShop(shop);
             buyer_shop_LST_products.setLayoutManager(new LinearLayoutManager(shopBuyer));
             buyer_shop_LST_products.setAdapter(adapterProduct);
         }
@@ -95,7 +95,13 @@ public class ShopBuyer extends AppCompatActivity {
     }
 
     private void findViews() {
-        buyer_shop_IMG_shop = findViewById(R.id.buyer_shop_IMG_shop);
         buyer_shop_LST_products = findViewById(R.id.buyer_shop_LST_products);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

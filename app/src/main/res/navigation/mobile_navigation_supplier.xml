@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_shop_supplier" />
 
     <fragment
+        android:id="@+id/navigation_orders_supplier"
+        android:name="com.daniel.final_project.activities.shared.orders.OrdersFragment"
+        android:label="@string/orders"
+        tools:layout="@layout/fragment_orders_shared" />
+
+    <fragment
         android:id="@+id/navigation_profile_supplier"
         android:name="com.daniel.final_project.activities.shared.profile.ProfileFragment"
         android:label="@string/profile"

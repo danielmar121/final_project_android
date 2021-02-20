@@ -5,43 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/orange_background">
 
-    <ImageView
-        android:id="@+id/buyer_shop_IMG_shop"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginVertical="10dp"
-        android:background="@color/white"
-        android:scaleType="fitXY"
-        android:src="@drawable/vegetables" />
-
-    <TextView
-        android:id="@+id/buyer_shop_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buyer_shop_IMG_shop"
-        android:layout_marginHorizontal="20dp"
-        android:text="@string/supplier"
-        android:textColor="@color/black"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/buyer_shop_LBL_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buyer_shop_app_name"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
-        android:ellipsize="end"
-        android:maxLines="5"
-        android:text="Content When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny. When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny."
-        android:textColor="@color/black"
-        android:textSize="12sp" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/buyer_shop_LST_products"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/buyer_shop_LBL_description" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

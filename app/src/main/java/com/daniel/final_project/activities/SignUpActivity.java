@@ -57,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         User user = getUser();
 
-        if ( user == null) {
+        if (user == null) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
             return;
         }

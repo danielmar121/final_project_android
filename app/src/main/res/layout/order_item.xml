@@ -57,6 +57,15 @@
                 android:textColor="@color/orange_background" />
         </LinearLayout>
 
-
+        <Button
+            android:id="@+id/order_item_BTN_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:textSize="12dp"
+            android:textColor="@color/red"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            style="?attr/borderlessButtonStyle" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

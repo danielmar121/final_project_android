@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.daniel.final_project.R;
 import com.daniel.final_project.objects.Shop;
-import com.google.android.material.textfield.TextInputEditText;
 import com.mikhaellopez.hfrecyclerviewkotlin.HFRecyclerView;
 
 public class AdapterShops extends HFRecyclerView<Shop> {
@@ -94,11 +93,11 @@ public class AdapterShops extends HFRecyclerView<Shop> {
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        TextInputEditText buyer_shops_ETXT_search;
-        ImageView buyer_shops_IMG_advertise;
+        ImageView shops_buyer_header_IMG_advertise;
 
         HeaderViewHolder(View view) {
             super(view);
+            shops_buyer_header_IMG_advertise = itemView.findViewById(R.id.shops_buyer_header_IMG_advertise);
         }
     }
 
@@ -108,5 +107,4 @@ public class AdapterShops extends HFRecyclerView<Shop> {
         }
     }
     //endregion
-
 }

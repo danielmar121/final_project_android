@@ -12,22 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.UserDetailsCallBack;
+import com.daniel.final_project.interfaces.ObjectCallBack;
 import com.daniel.final_project.objects.User;
 import com.daniel.final_project.services.MyFireBase;
 
 
 public class ProfileFragment extends Fragment {
-    View root;
-    MyFireBase myFireBase;
-    TextView shared_profile_ETXT_first_name, shared_profile_ETXT_last_name, shared_profile_ETXT_email, shared_profile_ETXT_phone;
-    Button shared_profile_BTN_save;
-    User user;
+    private View root;
+    private MyFireBase myFireBase;
+    private TextView shared_profile_ETXT_first_name, shared_profile_ETXT_last_name, shared_profile_ETXT_email, shared_profile_ETXT_phone;
+    private Button shared_profile_BTN_save;
+    private User user;
 
-    UserDetailsCallBack userDetailsCallBack = new UserDetailsCallBack() {
+    private ObjectCallBack userCallBack = new ObjectCallBack() {
         @Override
-        public void passUserDetails(User userFromFireBase) {
-            user = userFromFireBase;
+        public void sendObjectToActivity(Object object) {
+            user = (User) object;
             shared_profile_ETXT_first_name.setText(user.getFirstName());
             shared_profile_ETXT_last_name.setText(user.getLastName());
             shared_profile_ETXT_email.setText(user.getEmail());
@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initViews() {
-        myFireBase.getUser(userDetailsCallBack);
+        myFireBase.getUser(userCallBack);
 
         shared_profile_BTN_save.setOnClickListener(new View.OnClickListener() {
             @Override

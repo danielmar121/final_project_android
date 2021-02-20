@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/buyer_payment_LYT_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,8 +30,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/buyer_payment_LBL_products"
-        android:layout_above="@+id/buyer_payment_LYT_buttons">
+        android:layout_above="@+id/buyer_payment_LYT_buttons"
+        android:layout_below="@+id/buyer_payment_LBL_products">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,8 +89,8 @@
                 android:layout_marginRight="20dp"
                 android:autofillHints="1111 2222 3333 4444"
                 android:background="@drawable/circle_corners_edit_text"
-                android:inputType="text"
                 android:hint="@string/credit_number"
+                android:inputType="text"
                 android:padding="15dp"
                 android:textSize="15sp" />
 
@@ -102,8 +103,8 @@
                 android:layout_marginRight="20dp"
                 android:autofillHints="123"
                 android:background="@drawable/circle_corners_edit_text"
-                android:inputType="text"
                 android:hint="@string/security_number"
+                android:inputType="text"
                 android:padding="15dp"
                 android:textSize="15sp" />
 
@@ -115,11 +116,11 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center_vertical"
                     android:background="@drawable/circle_corners_edit_text"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -140,10 +141,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
                     android:layout_marginRight="5dp"
-                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/circle_corners_edit_text"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -170,33 +171,29 @@
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buyer_payment_BTN_cancel"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity=""
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/circle_corners_button_red"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             android:text="@string/cancel"
-            android:textColor="@color/white" />
+            app:strokeColor="@color/purple_500" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buyer_payment_BTN_pay"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_gravity=""
             android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/circle_corners_button"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             android:text="@string/pay"
-            android:textColor="@color/white" />
+            app:backgroundTint="@color/dark_green_500"
+            app:cornerRadius="20dp" />
 
     </LinearLayout>
 </RelativeLayout>

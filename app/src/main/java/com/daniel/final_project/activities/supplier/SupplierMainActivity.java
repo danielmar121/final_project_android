@@ -21,7 +21,7 @@ public class SupplierMainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_log_out_supplier, R.id.navigation_shop_supplier, R.id.navigation_profile_supplier)
+                R.id.navigation_log_out_supplier, R.id.navigation_shop_supplier, R.id.navigation_orders_supplier, R.id.navigation_profile_supplier)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.supplier_main_FRM_activity);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

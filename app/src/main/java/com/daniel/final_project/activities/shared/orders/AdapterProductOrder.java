@@ -1,4 +1,4 @@
-package com.daniel.final_project.activities.buyer.ui.cart;
+package com.daniel.final_project.activities.shared.orders;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ public class AdapterProductOrder extends RecyclerView.Adapter<AdapterProductOrde
     // inflates the row layout from xml when needed
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.product_order_buyer_item, parent, false);
+        View view = mInflater.inflate(R.layout.product_order_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -101,13 +101,13 @@ public class AdapterProductOrder extends RecyclerView.Adapter<AdapterProductOrde
 
         MyViewHolder(View itemView) {
             super(itemView);
-            product_order_buyer_LBL_name = itemView.findViewById(R.id.product_order_buyer_LBL_name);
-            product_order_buyer_LBL_units_amount = itemView.findViewById(R.id.product_order_buyer_LBL_units_amount);
-            product_order_buyer_LBL_price_unit = itemView.findViewById(R.id.product_order_buyer_LBL_price_unit);
-            product_order_buyer_LBL_units_total = itemView.findViewById(R.id.product_order_buyer_LBL_units_total);
-            product_order_buyer_LBL_price_total = itemView.findViewById(R.id.product_order_buyer_LBL_price_total);
+            product_order_buyer_LBL_name = itemView.findViewById(R.id.product_order_shared_LBL_name);
+            product_order_buyer_LBL_units_amount = itemView.findViewById(R.id.product_order_shared_LBL_units_amount);
+            product_order_buyer_LBL_price_unit = itemView.findViewById(R.id.product_order_shared_LBL_price_unit);
+            product_order_buyer_LBL_units_total = itemView.findViewById(R.id.product_order_shared_LBL_units_total);
+            product_order_buyer_LBL_price_total = itemView.findViewById(R.id.product_order_shared_LBL_price_total);
 
-            product_order_buyer_BTN_delete = itemView.findViewById(R.id.product_order_buyer_BTN_delete);
+            product_order_buyer_BTN_delete = itemView.findViewById(R.id.product_order_shared_BTN_delete);
         }
     }
 

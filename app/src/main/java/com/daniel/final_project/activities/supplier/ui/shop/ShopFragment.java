@@ -26,11 +26,11 @@ import java.util.List;
 
 public class ShopFragment extends Fragment {
 
-    View root;
-    MyFireBase myFireBase;
-    RecyclerView supplier_shop_LST_shop;
-    Shop shop;
-    AdapterShop adapterShop;
+    private View root;
+    private MyFireBase myFireBase;
+    private RecyclerView supplier_shop_LST_shop;
+    private Shop shop;
+    private AdapterShop adapterShop;
 
     private ObjectsCallBack objectsCallBack = new ObjectsCallBack() {
         @Override

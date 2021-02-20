@@ -1,6 +1,6 @@
 package com.daniel.final_project.activities.buyer.ui.shops;
 
-import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,113 +9,65 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.daniel.final_project.R;
 import com.daniel.final_project.objects.Product;
+import com.daniel.final_project.objects.Shop;
+import com.google.android.material.card.MaterialCardView;
+import com.mikhaellopez.hfrecyclerviewkotlin.HFRecyclerView;
 
-import java.util.List;
+public class AdapterProduct extends HFRecyclerView<Product> {
+    private MyItemClickListener itemClickListener;
+    private Shop shop;
 
-public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHolder> {
-    private List<Product> products;
-    private LayoutInflater mInflater;
-    private MyItemClickListener mClickListener;
-
-    // data is passed into the constructor
-    AdapterProduct(Context context, List<Product> _products) {
-        this.mInflater = LayoutInflater.from(context);
-        this.products = _products;
+    public AdapterProduct() {
+        // With Header & With Footer
+        super(true, false);
     }
 
-    // inflates the row layout from xml when needed
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.product_buyer_item, parent, false);
-        return new MyViewHolder(view);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof ItemViewHolder) {
+            ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+            itemViewHolder.bind(getItem(position));
+        } else if (holder instanceof HeaderViewHolder) {
+            AdapterProduct.HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
+            headerViewHolder.bind(getShop());
+        } else if (holder instanceof FooterViewHolder) {
+
+        }
     }
 
-    // binds the data to the TextView in each row
+    //region Override Get ViewHolder
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Product product = products.get(position);
-        holder.product_item_LBL_name.setText(product.getName());
-        holder.product_item_LBL_description.setText(product.getDescription());
-        holder.product_item_LBL_price.setText("" + product.getPrice());
-
-//        Glide
-//                .with(mInflater.getContext())
-//                .load(product.getImageUrl())
-//                .centerCrop()
-//                .into(holder.product_item_IMG_product);
-
-        holder.product_item_LAY_product_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mClickListener != null) {
-                    if (holder.product_item_LAY_add_to_cart.getVisibility() == View.VISIBLE) {
-                        holder.product_item_LAY_add_to_cart.setVisibility(View.GONE);
-                    } else {
-                        holder.product_item_LAY_add_to_cart.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-        });
-
-        holder.product_item_BTN_add_to_cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mClickListener != null) {
-                    int units = Integer.parseInt(holder.product_item_LBL_units_to_buy.getText().toString());
-                    mClickListener.onAddToCartClick(view, product, units);
-                }
-            }
-        });
-
-        holder.product_item_BTN_plus_one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mClickListener != null) {
-                    int units = Integer.parseInt(holder.product_item_LBL_units_to_buy.getText().toString()) + 1;
-                    holder.product_item_LBL_units_to_buy.setText("" + units);
-                }
-            }
-        });
-
-        holder.product_item_BTN_plus_ten.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mClickListener != null) {
-                    int units = Integer.parseInt(holder.product_item_LBL_units_to_buy.getText().toString()) + 10;
-                    holder.product_item_LBL_units_to_buy.setText("" + units);
-                }
-            }
-        });
-
-        holder.product_item_BTN_plus_hundred.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mClickListener != null) {
-                    int units = Integer.parseInt(holder.product_item_LBL_units_to_buy.getText().toString()) + 100;
-                    holder.product_item_LBL_units_to_buy.setText("" + units);
-                }
-            }
-        });
+    protected RecyclerView.ViewHolder getItemView(LayoutInflater inflater, ViewGroup parent) {
+        return new ItemViewHolder(inflater.inflate(R.layout.product_buyer_item, parent, false));
     }
 
-    // total number of rows
     @Override
-    public int getItemCount() {
-        return products.size();
+    protected RecyclerView.ViewHolder getHeaderView(LayoutInflater inflater, ViewGroup parent) {
+        return new HeaderViewHolder(inflater.inflate(R.layout.shop_buyer_header, parent, false));
     }
 
-    // convenience method for getting data at click position
-    public Product getItem(int id) {
-        return products.get(id);
+    @Override
+    protected RecyclerView.ViewHolder getFooterView(LayoutInflater inflater, ViewGroup parent) {
+        return null;
     }
 
     // allows clicks events to be caught
     public void setClickListener(MyItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
+        this.itemClickListener = itemClickListener;
     }
 
     // parent activity will implement this method to respond to click events
@@ -123,14 +75,15 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         void onAddToCartClick(View view, Product product, int units);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    //region ViewHolder Header and Footer
+    class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView product_item_LBL_name, product_item_LBL_description, product_item_LBL_price, product_item_LBL_units_to_buy;
         Button product_item_BTN_add_to_cart, product_item_BTN_plus_one, product_item_BTN_plus_ten, product_item_BTN_plus_hundred;
         RelativeLayout product_item_LAY_product_data, product_item_LAY_add_to_cart;
         ImageView product_item_IMG_product;
+        MaterialCardView product_item_CARD_product_cover;
 
-
-        MyViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             product_item_LBL_name = itemView.findViewById(R.id.product_item_LBL_name);
             product_item_LBL_description = itemView.findViewById(R.id.product_item_LBL_description);
@@ -147,7 +100,104 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
             product_item_LAY_add_to_cart.setVisibility(View.GONE);
 
             product_item_IMG_product = itemView.findViewById(R.id.product_item_IMG_product);
+            product_item_CARD_product_cover = itemView.findViewById(R.id.product_item_CARD_product_cover);
+        }
+
+        void bind(Product product) {
+            product_item_LBL_name.setText(product.getName());
+            product_item_LBL_description.setText(product.getDescription());
+            product_item_LBL_price.setText("" + product.getPrice());
+
+            Glide
+                    .with(itemView.getContext())
+                    .load(product.getImageUrl())
+                    .centerCrop()
+                    .into(product_item_IMG_product);
+
+            product_item_LAY_product_data.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        if (product_item_LAY_add_to_cart.getVisibility() == View.VISIBLE) {
+                            product_item_LAY_add_to_cart.setVisibility(View.GONE);
+                        } else {
+                            product_item_LAY_add_to_cart.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            });
+
+            product_item_BTN_add_to_cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString());
+                        itemClickListener.onAddToCartClick(view, product, units);
+                    }
+                }
+            });
+
+            product_item_BTN_plus_one.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 1;
+                        product_item_LBL_units_to_buy.setText("" + units);
+                    }
+                }
+            });
+
+            product_item_BTN_plus_ten.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 10;
+                        product_item_LBL_units_to_buy.setText("" + units);
+                    }
+                }
+            });
+
+            product_item_BTN_plus_hundred.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 100;
+                        product_item_LBL_units_to_buy.setText("" + units);
+                    }
+                }
+            });
         }
     }
 
+    class HeaderViewHolder extends RecyclerView.ViewHolder {
+        TextView shop_buyer_header_LBL_shop_name, shop_buyer_header_LBL_description;
+        ImageView shop_buyer_header_IMG_shop;
+
+
+        HeaderViewHolder(View view) {
+            super(view);
+            shop_buyer_header_LBL_shop_name = itemView.findViewById(R.id.shop_buyer_header_LBL_shop_name);
+            shop_buyer_header_LBL_description = itemView.findViewById(R.id.shop_buyer_header_LBL_description);
+
+            shop_buyer_header_IMG_shop = itemView.findViewById(R.id.shop_buyer_header_IMG_shop);
+        }
+
+        void bind(Shop shop) {
+            shop_buyer_header_LBL_shop_name.setText(shop.getName());
+            shop_buyer_header_LBL_description.setText(shop.getDescription());
+            Glide
+                    .with(itemView.getContext())
+                    .load(shop.getImageUrl())
+                    .centerCrop()
+                    .into(shop_buyer_header_IMG_shop);
+        }
+    }
+
+    class FooterViewHolder extends RecyclerView.ViewHolder {
+        FooterViewHolder(View view) {
+            super(view);
+        }
+    }
+    //endregion
 }
+
