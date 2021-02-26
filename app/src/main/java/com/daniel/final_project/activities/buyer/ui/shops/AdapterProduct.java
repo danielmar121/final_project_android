@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.ToastCallBack;
+import com.daniel.final_project.interfaces.shared.ToastCallBack;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.Shop;
 import com.google.android.material.card.MaterialCardView;
@@ -164,8 +164,6 @@ public class AdapterProduct extends HFRecyclerView<Product> {
                             toastCallBack.toast("" + units);
                         }
                         product_item_LBL_units_to_buy.setText("" + units);
-
-
                     }
                 }
             });

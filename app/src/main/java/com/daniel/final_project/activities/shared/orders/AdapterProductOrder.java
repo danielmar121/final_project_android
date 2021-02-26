@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderPriceCallBack;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
@@ -44,9 +44,10 @@ public class AdapterProductOrder extends RecyclerView.Adapter<AdapterProductOrde
         ProductOrder productOrder = productOrders.get(position);
         MyFireBase myFireBase = MyFireBase.getInstance();
 
-        BuyerProductOrderItemCallBack buyerProductOrderItemCallBack = new BuyerProductOrderItemCallBack() {
+        ObjectCallBack productCallBack = new ObjectCallBack() {
             @Override
-            public void putProductDetailsInItem(Product product) {
+            public void sendObjectToActivity(Object object) {
+                Product product = (Product) object;
                 if (product != null) {
                     holder.product_order_buyer_LBL_name.setText(product.getName());
                     holder.product_order_buyer_LBL_price_unit.setText("" + product.getPrice());
@@ -70,7 +71,7 @@ public class AdapterProductOrder extends RecyclerView.Adapter<AdapterProductOrde
 
         holder.product_order_buyer_LBL_units_amount.setText("" + productOrder.getQuantity());
         holder.product_order_buyer_LBL_units_total.setText("" + productOrder.getQuantity());
-        myFireBase.getProduct(buyerProductOrderItemCallBack, productOrder.getPid());
+        myFireBase.getProduct(productCallBack, productOrder.getPid());
     }
 
     // total number of rows

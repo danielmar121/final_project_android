@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectsCallBack;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
 import com.daniel.final_project.utils.Constants;
@@ -21,14 +21,14 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class ShopsFragment extends Fragment {
-
     private View root;
     private MyFireBase myFireBase;
     private RecyclerView buyer_shops_LST_shops;
 
-    private BuyerShopsCallBack buyerShopsCallBack = new BuyerShopsCallBack() {
+    private ObjectsCallBack shopsCallBack = new ObjectsCallBack() {
         @Override
-        public void putShopsInList(List<Shop> shops) {
+        public void sendObjectsToActivity(List<Object> objects) {
+            List<Shop> shops = (List<Shop>) (List<?>) objects;
             AdapterShops adapterShop = new AdapterShops();
 
             adapterShop.setClickListener(new AdapterShops.MyItemClickListener() {
@@ -62,7 +62,7 @@ public class ShopsFragment extends Fragment {
     }
 
     private void initViews() {
-        myFireBase.getShopsForBuyer(buyerShopsCallBack);
+        myFireBase.getShopsForBuyer(shopsCallBack);
     }
 
     private void findViews() {

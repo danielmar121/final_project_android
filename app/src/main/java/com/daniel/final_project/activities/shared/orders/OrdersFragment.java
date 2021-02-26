@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.ObjectCallBack;
-import com.daniel.final_project.interfaces.ObjectsCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectsCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.objects.User;

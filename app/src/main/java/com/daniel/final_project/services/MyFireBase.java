@@ -6,12 +6,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.daniel.final_project.interfaces.LandingPageCallBack;
-import com.daniel.final_project.interfaces.ObjectCallBack;
-import com.daniel.final_project.interfaces.ObjectsCallBack;
-import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
-import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
-import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
+import com.daniel.final_project.interfaces.shared.LandingPageCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectsCallBack;
 import com.daniel.final_project.interfaces.supplier.SupplierURLCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
@@ -91,7 +88,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -133,25 +130,25 @@ public class MyFireBase {
                 .setValue(isSignUp);
     }
 
-    public void getShopsForBuyer(BuyerShopsCallBack buyerShopsCallBack) {
+    public void getShopsForBuyer(ObjectsCallBack shopsCallBack) {
         DatabaseReference shopsRef = this.database.getReference("shops");
 
         shopsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Shop> shops = new ArrayList<>();
+                List<Object> shops = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Shop shop = snapshot.getValue(Shop.class);
                     shops.add(shop);
                 }
 
-                buyerShopsCallBack.putShopsInList(shops);
+                shopsCallBack.sendObjectsToActivity(shops);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -174,47 +171,47 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
 
-    public void getProduct(BuyerProductOrderItemCallBack buyerProductOrderItemCallBack, String pid) {
+    public void getProduct(ObjectCallBack productCallBack, String pid) {
         DatabaseReference productRef = this.database.getReference("products").child(pid);
 
         productRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Product product = dataSnapshot.getValue(Product.class);
-                buyerProductOrderItemCallBack.putProductDetailsInItem(product);
+                productCallBack.sendObjectToActivity(product);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
 
-    public void getProductOrders(BuyerProductOrderCallBack buyerProductOrderCallBack, String oid) {
+    public void getProductOrders(ObjectsCallBack productOrdersCallBack, String oid) {
         Query productsRef = this.database.getReference("productOrder").orderByChild("oid").equalTo(oid);
 
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<ProductOrder> productOrders = new ArrayList<>();
+                List<Object> productOrders = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ProductOrder productOrder = snapshot.getValue(ProductOrder.class);
                     productOrders.add(productOrder);
                 }
 
-                buyerProductOrderCallBack.putProductOrdersInList(productOrders);
+                productOrdersCallBack.sendObjectsToActivity(productOrders);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -241,7 +238,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -268,7 +265,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -299,7 +296,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -319,7 +316,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }
@@ -343,7 +340,7 @@ public class MyFireBase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+                Log.d("MyFireBase", "Failed to read value.", error.toException());
             }
         });
     }

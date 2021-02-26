@@ -1,4 +1,4 @@
-package com.daniel.final_project.interfaces;
+package com.daniel.final_project.interfaces.shared;
 
 import com.daniel.final_project.objects.User;
 

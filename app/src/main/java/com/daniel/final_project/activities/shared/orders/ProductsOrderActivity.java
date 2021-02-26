@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
 import com.daniel.final_project.activities.buyer.ui.cart.BuyerPaymentActivity;
-import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectsCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderPriceCallBack;
 import com.daniel.final_project.objects.ProductOrder;
 import com.daniel.final_project.services.MyFireBase;
@@ -42,11 +42,12 @@ public class ProductsOrderActivity extends AppCompatActivity {
         }
     };
 
-    private BuyerProductOrderCallBack buyerProductOrderCallBack = new BuyerProductOrderCallBack() {
-
+    private ObjectsCallBack productOrdersCallBack = new ObjectsCallBack() {
         @Override
-        public void putProductOrdersInList(List<ProductOrder> ProductOrders) {
-            AdapterProductOrder adapterProductOrder = new AdapterProductOrder(ProductsOrderActivity.this, ProductOrders, buyerProductOrderPriceCallBack);
+        public void sendObjectsToActivity(List<Object> objects) {
+            List<ProductOrder> productOrders = (List<ProductOrder>) (List<?>) objects;
+
+            AdapterProductOrder adapterProductOrder = new AdapterProductOrder(ProductsOrderActivity.this, productOrders, buyerProductOrderPriceCallBack);
             totalPrice = 0.0;
 
             adapterProductOrder.setClickListener(new AdapterProductOrder.MyItemClickListener() {
@@ -79,7 +80,7 @@ public class ProductsOrderActivity extends AppCompatActivity {
     private void initViews() {
         String oid = getIntent().getStringExtra(Constants.ORDER_ID);
         Boolean isSupplier = getIntent().getBooleanExtra(Constants.IS_SUPPLIER, false);
-        myFireBase.getProductOrders(buyerProductOrderCallBack, oid);
+        myFireBase.getProductOrders(productOrdersCallBack, oid);
         totalPrice = 0.0;
 
         if (isSupplier) {

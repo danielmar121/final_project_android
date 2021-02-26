@@ -44,7 +44,7 @@ public class SupplierAddingProductActivity extends AppCompatActivity {
         @Override
         public void passPhotoURL(String photoURL) {
             if (photoURL.isEmpty() || photoURL == null) {
-                Log.w("passPhotoURL", "Failed to pass photoURL");
+                Log.d("SupplierAddingProductActivity", "Failed to pass photoURL");
                 Toast.makeText(SupplierAddingProductActivity.this, "Photo URL is invalid", Toast.LENGTH_SHORT).show();
             } else {
                 product.setImageUrl(photoURL);

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.daniel.final_project.R;
-import com.daniel.final_project.interfaces.ObjectCallBack;
+import com.daniel.final_project.interfaces.shared.ObjectCallBack;
 import com.daniel.final_project.objects.User;
 import com.daniel.final_project.services.MyFireBase;
 

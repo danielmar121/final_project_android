@@ -44,7 +44,7 @@ public class SupplierSignUpActivity extends AppCompatActivity {
         @Override
         public void passPhotoURL(String photoURL) {
             if (photoURL.isEmpty() || photoURL == null) {
-                Log.w("passPhotoURL", "Failed to pass photoURL");
+                Log.d("SupplierSignUpActivity", "Failed to pass photoURL");
                 Toast.makeText(SupplierSignUpActivity.this, "Photo URL is invalid", Toast.LENGTH_SHORT).show();
             } else {
                 shop.setImageUrlSquare(photoURL);
@@ -57,7 +57,7 @@ public class SupplierSignUpActivity extends AppCompatActivity {
         @Override
         public void passPhotoURL(String photoURL) {
             if (photoURL.isEmpty() || photoURL == null) {
-                Log.w("passPhotoURL", "Failed to pass photoURL");
+                Log.d("SupplierSignUpActivity", "Failed to pass photoURL");
                 Toast.makeText(SupplierSignUpActivity.this, "Photo URL is invalid", Toast.LENGTH_SHORT).show();
             } else {
                 shop.setImageUrlWide(photoURL);

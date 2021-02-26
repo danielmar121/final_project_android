@@ -16,7 +16,7 @@ import com.daniel.final_project.R;
 import com.daniel.final_project.activities.buyer.BuyerMainActivity;
 import com.daniel.final_project.activities.supplier.SupplierMainActivity;
 import com.daniel.final_project.activities.supplier.SupplierSignUpActivity;
-import com.daniel.final_project.interfaces.LandingPageCallBack;
+import com.daniel.final_project.interfaces.shared.LandingPageCallBack;
 import com.daniel.final_project.objects.User;
 import com.daniel.final_project.services.MyFireBase;
 import com.firebase.ui.auth.AuthUI;
@@ -162,7 +162,7 @@ public class LandingPageActivity extends AppCompatActivity {
                 }
 
                 showSnackBar(R.string.unknown_error);
-                Log.e("pttt", "Sign-in error: ", response.getError());
+                Log.d("LandingPageActivity", "Sign-in error: ", response.getError());
             }
         }
     }
