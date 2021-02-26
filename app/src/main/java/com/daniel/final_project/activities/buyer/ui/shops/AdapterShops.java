@@ -77,7 +77,7 @@ public class AdapterShops extends HFRecyclerView<Shop> {
             movie_LBL_description.setText(shop.getDescription());
             Glide
                     .with(itemView.getContext())
-                    .load(shop.getImageUrl())
+                    .load(shop.getImageUrlSquare())
                     .centerCrop()
                     .into(shop_buyer_IMG_cover);
 

@@ -16,7 +16,7 @@
         android:src="@drawable/vegetables" />
 
     <TextView
-        android:id="@+id/supplier_adding_product_ETXT_page_name"
+        android:id="@+id/supplier_adding_product_LBL_page_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/supplier_adding_product_IMG_logo"
@@ -29,7 +29,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/supplier_adding_product_ETXT_page_name">
+        android:layout_above="@+id/supplier_adding_product_LYT_buttons"
+        android:layout_below="@+id/supplier_adding_product_LBL_page_name">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,14 +81,33 @@
                 android:padding="15dp"
                 android:textSize="15sp" />
 
+            <EditText
+                android:id="@+id/supplier_adding_product_ETXT_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:autofillHints="0.5 kg"
+                android:background="@drawable/circle_corners_edit_text"
+                android:hint="@string/product_price"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="15sp" />
+
+
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></ImageView>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/supplier_adding_product_BTN_upload_photo"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/circle_corners_button_login"
                 android:drawableStart="@drawable/photo"
                 android:padding="10dp"

@@ -29,6 +29,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/supplier_sign_up_LYT_buttons"
         android:layout_below="@+id/supplier_sign_up_ETXT_page_name">
 
         <LinearLayout
@@ -37,7 +38,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/supplier_sign_up_ETXT_first_name"
+                android:id="@+id/supplier_sign_up_ETXT_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -51,7 +52,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/supplier_sign_up_ETXT_email"
+                android:id="@+id/supplier_sign_up_ETXT_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -65,7 +66,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/supplier_sign_up_ETXT_last_name"
+                android:id="@+id/supplier_sign_up_ETXT_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -108,9 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/circle_corners_button_login"
                 android:drawableStart="@drawable/photo"
                 android:drawablePadding="15dp"

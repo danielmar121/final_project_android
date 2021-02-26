@@ -96,6 +96,9 @@
     <string name="price_sign">$</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="product_price">Price</string>
     <string name="orders">Orders</string>
+    <string name="update_shop">Update Shop</string>
+    <string name="edit_product">Edit Product</string>
 
 </resources>

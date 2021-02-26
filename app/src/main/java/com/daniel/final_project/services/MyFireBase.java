@@ -1,7 +1,10 @@
 package com.daniel.final_project.services;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.daniel.final_project.interfaces.LandingPageCallBack;
 import com.daniel.final_project.interfaces.ObjectCallBack;
@@ -9,11 +12,15 @@ import com.daniel.final_project.interfaces.ObjectsCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerProductOrderItemCallBack;
 import com.daniel.final_project.interfaces.buyer.BuyerShopsCallBack;
+import com.daniel.final_project.interfaces.supplier.SupplierURLCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.objects.User;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,22 +29,32 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class MyFireBase {
 
     private static MyFireBase instance;
+    private FirebaseStorage storage;
     private FirebaseDatabase database;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
-    private DatabaseReference myRef;
+
 
     private MyFireBase(Context context) {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+
+
     }
 
     public static void init(Context context) {
@@ -80,28 +97,40 @@ public class MyFireBase {
     }
 
     public void updateUser(User user) {
-        this.myRef = this.database.getReference("users");
-        myRef.child(user.getUid()).setValue(user);
+        DatabaseReference usersRef = this.database.getReference("users");
+        usersRef.child(user.getUid()).setValue(user);
     }
 
     public void updateProduct(Product product) {
-        this.myRef = this.database.getReference("products");
-        myRef.child(product.getPid()).setValue(product);
+        DatabaseReference productsRef = this.database.getReference("products");
+        productsRef.child(product.getPid()).setValue(product);
     }
 
     public void updateShop(Shop shop) {
-        this.myRef = this.database.getReference("shops");
-        myRef.child(shop.getSid()).setValue(shop);
+        DatabaseReference shopsRef = this.database.getReference("shops");
+        shopsRef.child(shop.getSid()).setValue(shop);
     }
 
     public void updateOrder(Order order) {
-        this.myRef = this.database.getReference("orders");
-        myRef.child(order.getOid()).setValue(order);
+        DatabaseReference ordersRef = this.database.getReference("orders");
+        ordersRef.child(order.getOid()).setValue(order);
     }
 
     public void updateProductOrder(ProductOrder productOrder) {
-        this.myRef = this.database.getReference("productOrder");
-        myRef.child(productOrder.getProductOrderId()).setValue(productOrder);
+        DatabaseReference productOrderRef = this.database.getReference("productOrder");
+        productOrderRef.child(productOrder.getProductOrderId()).setValue(productOrder);
+    }
+
+    public void updateOrderStatus(String oid, String status) {
+        this.database.getReference("orders").child(oid).child("orderStatus").setValue(status);
+    }
+
+    public void updateUserIsSignUpState(Boolean isSignUp) {
+        this.database
+                .getReference("users")
+                .child(firebaseUser.getUid())
+                .child("isSignUp")
+                .setValue(isSignUp);
     }
 
     public void getShopsForBuyer(BuyerShopsCallBack buyerShopsCallBack) {
@@ -205,10 +234,6 @@ public class MyFireBase {
         productRef.removeValue();
     }
 
-    public void updateOrderStatus(String oid, String status) {
-        this.database.getReference("orders").child(oid).child("orderStatus").setValue(status);
-    }
-
     public void logOut() {
         auth.signOut();
         firebaseUser = auth.getCurrentUser();
@@ -276,6 +301,37 @@ public class MyFireBase {
             public void onCancelled(DatabaseError error) {
                 Log.w("logInExistingUser", "Failed to read value.", error.toException());
             }
+        });
+    }
+
+    public void savePhoto(SupplierURLCallBack supplierURLCallBack, Uri photoURI, String path) {
+        String elementId = UUID.randomUUID().toString();
+
+        final StorageReference ImagesPath = storage.getReference().child(path).child(elementId + ".jpg");
+
+        ImagesPath.putFile(photoURI).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                return ImagesPath.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downUri = task.getResult();
+                    downUri.toString();
+                    Map<String, Object> userMap = new HashMap<>();
+                    userMap.put("image", downUri.toString());
+                    supplierURLCallBack.passPhotoURL(downUri.toString());
+
+                } else {
+                    supplierURLCallBack.passPhotoURL(null);
+                }
+            }
+
         });
     }
 }

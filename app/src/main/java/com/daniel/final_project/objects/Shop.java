@@ -6,7 +6,8 @@ public class Shop {
     private String type = "";
     private String address = "";
     private String description = "";
-    private String imageUrl = "";
+    private String imageUrlSquare = "";
+    private String imageUrlWide = "";
     private String uid = "";
 
     public Shop() {
@@ -57,12 +58,21 @@ public class Shop {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageUrlSquare() {
+        return imageUrlSquare;
     }
 
-    public Shop setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public Shop setImageUrlSquare(String imageUrlSquare) {
+        this.imageUrlSquare = imageUrlSquare;
+        return this;
+    }
+
+    public String getImageUrlWide() {
+        return imageUrlWide;
+    }
+
+    public Shop setImageUrlWide(String imageUrlWide) {
+        this.imageUrlWide = imageUrlWide;
         return this;
     }
 
