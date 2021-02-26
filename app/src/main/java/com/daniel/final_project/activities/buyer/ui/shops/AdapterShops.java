@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.daniel.final_project.R;
 import com.daniel.final_project.objects.Shop;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.mikhaellopez.hfrecyclerviewkotlin.HFRecyclerView;
 
 public class AdapterShops extends HFRecyclerView<Shop> {
@@ -93,11 +95,14 @@ public class AdapterShops extends HFRecyclerView<Shop> {
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
-        ImageView shops_buyer_header_IMG_advertise;
+        AdView shops_buyer_header_ADS_advertise;
 
         HeaderViewHolder(View view) {
             super(view);
-            shops_buyer_header_IMG_advertise = itemView.findViewById(R.id.shops_buyer_header_IMG_advertise);
+            shops_buyer_header_ADS_advertise = itemView.findViewById(R.id.shops_buyer_header_ADS_advertise);
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            shops_buyer_header_ADS_advertise.loadAd(adRequest);
         }
     }
 

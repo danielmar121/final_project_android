@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1702575376168710~4417351419" />
+
         <activity
             android:name=".activities.LandingPageActivity"
             android:screenOrientation="portrait"
