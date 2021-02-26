@@ -164,7 +164,6 @@ public class SupplierAddingProductActivity extends AppCompatActivity {
     }
 
     private void insertProduct() {
-        //TODO: add/remove category
         Gson gson = new Gson();
         String productName = supplier_adding_product_ETXT_product_name.getText().toString();
         int quantity = Integer.parseInt(supplier_adding_product_ETXT_quantity.getText().toString());
@@ -173,7 +172,6 @@ public class SupplierAddingProductActivity extends AppCompatActivity {
         String shopJson = getIntent().getStringExtra(Constants.SHOP);
         shop = gson.fromJson(shopJson, Shop.class);
         product.setName(productName)
-                //.setCategory("Shoes")
                 .setDescription(description)
                 .setPrice(price)
                 .setQuantity(quantity)

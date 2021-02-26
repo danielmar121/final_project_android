@@ -219,18 +219,62 @@ public class MyFireBase {
         });
     }
 
-    public void deleteProductOrder(String productOrderId) {
-        DatabaseReference productOrderRef = this.database.getReference("productOrder").child(productOrderId);
+    public void deleteOrder(Order order) {
+        DatabaseReference orderRef = this.database
+                .getReference("orders")
+                .child(order.getOid());
+        orderRef.removeValue();
+
+        Query productsRef = this.database
+                .getReference("productOrder")
+                .orderByChild("oid")
+                .equalTo(order.getOid());
+
+        productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ProductOrder productOrder = snapshot.getValue(ProductOrder.class);
+                    deleteProductOrder(productOrder);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    public void deleteProductOrder(ProductOrder productOrder) {
+        DatabaseReference productOrderRef = this.database
+                .getReference("productOrder")
+                .child(productOrder.getProductOrderId());
+
+        addUnitsProduct(productOrder.getPid(), productOrder.getQuantity());
         productOrderRef.removeValue();
+    }
+
+    public void addUnitsProduct(String pid, int quantity) {
+        DatabaseReference productRef = this.database.getReference("products").child(pid);
+
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Product product = dataSnapshot.getValue(Product.class);
+                product.setQuantity(product.getQuantity() + quantity);
+                updateProduct(product);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("logInExistingUser", "Failed to read value.", error.toException());
+            }
+        });
     }
 
     public void deleteProduct(String pid) {
         DatabaseReference productRef = this.database.getReference("products").child(pid);
-        productRef.removeValue();
-    }
-
-    public void deleteOrder(String oid) {
-        DatabaseReference productRef = this.database.getReference("orders").child(oid);
         productRef.removeValue();
     }
 

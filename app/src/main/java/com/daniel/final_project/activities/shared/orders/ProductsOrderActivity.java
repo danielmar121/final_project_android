@@ -53,7 +53,7 @@ public class ProductsOrderActivity extends AppCompatActivity {
 
                 @Override
                 public void onDeleteClick(View view, ProductOrder productOrder) {
-                    myFireBase.deleteProductOrder(productOrder.getProductOrderId());
+                    myFireBase.deleteProductOrder(productOrder);
                 }
             });
 

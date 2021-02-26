@@ -9,7 +9,7 @@
         android:id="@+id/landing_page_IMG_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:src="@drawable/vegetables" />
 </RelativeLayout>

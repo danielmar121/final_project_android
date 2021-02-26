@@ -33,7 +33,7 @@ public class OrdersFragment extends Fragment {
         @Override
         public void sendObjectsToActivity(List<Object> objects) {
             List<Order> Orders = (List<Order>) (List<?>) objects;
-            if (Orders == null || Orders.isEmpty() || getContext() == null)
+            if (getContext() == null)
                 return;
 
             AdapterOrder adapterOrder = new AdapterOrder(getContext(), Orders);
@@ -41,7 +41,6 @@ public class OrdersFragment extends Fragment {
             adapterOrder.setClickListener(new AdapterOrder.MyItemClickListener() {
                 @Override
                 public void openOrderDetails(View view, Order order) {
-
                     Intent shopIntent = new Intent(getContext(), ProductsOrderActivity.class);
                     shopIntent.putExtra(Constants.ORDER_ID, order.getOid());
                     shopIntent.putExtra(Constants.IS_SUPPLIER, user.getSupplier());
@@ -50,7 +49,7 @@ public class OrdersFragment extends Fragment {
 
                 @Override
                 public void deleteOrder(Order order) {
-                    myFireBase.deleteOrder(order.getOid());
+                    myFireBase.deleteOrder(order);
                 }
             });
 
@@ -58,7 +57,6 @@ public class OrdersFragment extends Fragment {
             buyer_cart_LST_orders.setAdapter(adapterOrder);
         }
     };
-
     private ObjectCallBack shopCallBack = new ObjectCallBack() {
         @Override
         public void sendObjectToActivity(Object object) {

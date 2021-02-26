@@ -64,19 +64,23 @@ public class AdapterShops extends HFRecyclerView<Shop> {
 
     //region ViewHolder Header and Footer
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView shop_buyer_LBL_name, movie_LBL_description;
+        TextView shop_buyer_LBL_name, shop_buyer_LBL_description, shop_buyer_LBL_type;
         ImageView shop_buyer_IMG_cover;
 
         ItemViewHolder(View itemView) {
             super(itemView);
             shop_buyer_LBL_name = itemView.findViewById(R.id.shop_buyer_LBL_name);
-            movie_LBL_description = itemView.findViewById(R.id.movie_LBL_description);
+            shop_buyer_LBL_type = itemView.findViewById(R.id.shop_buyer_LBL_type);
+            shop_buyer_LBL_description = itemView.findViewById(R.id.shop_buyer_LBL_description);
+
             shop_buyer_IMG_cover = itemView.findViewById(R.id.shop_buyer_IMG_cover);
         }
 
         void bind(Shop shop) {
             shop_buyer_LBL_name.setText(shop.getName());
-            movie_LBL_description.setText(shop.getDescription());
+            shop_buyer_LBL_description.setText(shop.getDescription());
+            shop_buyer_LBL_type.setText(shop.getType());
+
             Glide
                     .with(itemView.getContext())
                     .load(shop.getImageUrlSquare())

@@ -2,7 +2,6 @@ package com.daniel.final_project.objects;
 
 public class Product {
     private String pid = "";
-    private String category = "";
     private String name = "";
     private int quantity = 0;
     private String description = "";
@@ -20,15 +19,6 @@ public class Product {
 
     public Product setPid(String pid) {
         this.pid = pid;
-        return this;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public Product setCategory(String category) {
-        this.category = category;
         return this;
     }
 

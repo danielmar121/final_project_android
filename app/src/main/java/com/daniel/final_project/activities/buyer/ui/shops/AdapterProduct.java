@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.daniel.final_project.R;
+import com.daniel.final_project.interfaces.ToastCallBack;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.Shop;
 import com.google.android.material.card.MaterialCardView;
@@ -22,6 +23,7 @@ import com.mikhaellopez.hfrecyclerviewkotlin.HFRecyclerView;
 public class AdapterProduct extends HFRecyclerView<Product> {
     private MyItemClickListener itemClickListener;
     private Shop shop;
+    private ToastCallBack toastCallBack;
 
     public AdapterProduct() {
         // With Header & With Footer
@@ -70,6 +72,10 @@ public class AdapterProduct extends HFRecyclerView<Product> {
         this.itemClickListener = itemClickListener;
     }
 
+    public void setToastCallBack(ToastCallBack toastCallBack) {
+        this.toastCallBack = toastCallBack;
+    }
+
     // parent activity will implement this method to respond to click events
     public interface MyItemClickListener {
         void onAddToCartClick(View view, Product product, int units);
@@ -78,7 +84,8 @@ public class AdapterProduct extends HFRecyclerView<Product> {
     //region ViewHolder Header and Footer
     class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView product_item_LBL_name, product_item_LBL_description, product_item_LBL_price, product_item_LBL_units_to_buy;
-        Button product_item_BTN_add_to_cart, product_item_BTN_plus_one, product_item_BTN_plus_ten, product_item_BTN_plus_hundred;
+        Button product_item_BTN_add_to_cart, product_item_BTN_reset_units,
+                product_item_BTN_plus_one, product_item_BTN_plus_ten, product_item_BTN_plus_hundred;
         RelativeLayout product_item_LAY_product_data, product_item_LAY_add_to_cart;
         ImageView product_item_IMG_product;
         MaterialCardView product_item_CARD_product_cover;
@@ -91,6 +98,7 @@ public class AdapterProduct extends HFRecyclerView<Product> {
             product_item_LBL_units_to_buy = itemView.findViewById(R.id.product_item_LBL_units_to_buy);
 
             product_item_BTN_add_to_cart = itemView.findViewById(R.id.product_item_BTN_add_to_cart);
+            product_item_BTN_reset_units = itemView.findViewById(R.id.product_item_BTN_reset_units);
             product_item_BTN_plus_one = itemView.findViewById(R.id.product_item_BTN_plus_one);
             product_item_BTN_plus_ten = itemView.findViewById(R.id.product_item_BTN_plus_ten);
             product_item_BTN_plus_hundred = itemView.findViewById(R.id.product_item_BTN_plus_hundred);
@@ -137,12 +145,27 @@ public class AdapterProduct extends HFRecyclerView<Product> {
                 }
             });
 
+            product_item_BTN_reset_units.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        product_item_LBL_units_to_buy.setText("" + 0);
+                    }
+                }
+            });
+
             product_item_BTN_plus_one.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (itemClickListener != null) {
                         int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 1;
+                        if (product.getQuantity() < units) {
+                            units = product.getQuantity();
+                            toastCallBack.toast("" + units);
+                        }
                         product_item_LBL_units_to_buy.setText("" + units);
+
+
                     }
                 }
             });
@@ -152,6 +175,10 @@ public class AdapterProduct extends HFRecyclerView<Product> {
                 public void onClick(View view) {
                     if (itemClickListener != null) {
                         int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 10;
+                        if (product.getQuantity() < units) {
+                            units = product.getQuantity();
+                            toastCallBack.toast("" + units);
+                        }
                         product_item_LBL_units_to_buy.setText("" + units);
                     }
                 }
@@ -162,6 +189,10 @@ public class AdapterProduct extends HFRecyclerView<Product> {
                 public void onClick(View view) {
                     if (itemClickListener != null) {
                         int units = Integer.parseInt(product_item_LBL_units_to_buy.getText().toString()) + 100;
+                        if (product.getQuantity() < units) {
+                            units = product.getQuantity();
+                            toastCallBack.toast("" + units);
+                        }
                         product_item_LBL_units_to_buy.setText("" + units);
                     }
                 }

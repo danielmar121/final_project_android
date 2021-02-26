@@ -2,6 +2,7 @@ package com.daniel.final_project.activities.buyer.ui.shops;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniel.final_project.R;
 import com.daniel.final_project.interfaces.ObjectsCallBack;
+import com.daniel.final_project.interfaces.ToastCallBack;
 import com.daniel.final_project.objects.Order;
 import com.daniel.final_project.objects.Product;
 import com.daniel.final_project.objects.ProductOrder;
@@ -26,6 +28,14 @@ public class ShopBuyer extends AppCompatActivity {
     private ShopBuyer shopBuyer;
     private Shop shop;
     private Order order;
+
+    private ToastCallBack toastCallBack = new ToastCallBack() {
+        @Override
+        public void toast(String units) {
+            String message = "Cant buy more than " + units + " units";
+            Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
+        }
+    };
 
     private ObjectsCallBack objectsCallBack = new ObjectsCallBack() {
         @Override
@@ -47,7 +57,10 @@ public class ShopBuyer extends AppCompatActivity {
                                 .setQuantity(units)
                                 .setProductOrderId(productOrderId);
 
+                        product.setQuantity(product.getQuantity() - units);
+
                         myFireBase.updateOrder(order);
+                        myFireBase.updateProduct(product);
                         myFireBase.updateProductOrder(productOrder);
                     }
                 }
@@ -55,6 +68,7 @@ public class ShopBuyer extends AppCompatActivity {
 
             adapterProduct.setData(products);
             adapterProduct.setShop(shop);
+            adapterProduct.setToastCallBack(toastCallBack);
             buyer_shop_LST_products.setLayoutManager(new LinearLayoutManager(shopBuyer));
             buyer_shop_LST_products.setAdapter(adapterProduct);
         }

@@ -52,7 +52,19 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/movie_LBL_description"
+            android:id="@+id/shop_buyer_LBL_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/type"
+            android:textColor="@color/orange_background" />
+
+        <TextView
+            android:id="@+id/shop_buyer_LBL_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shop_buyer_LBL_name"

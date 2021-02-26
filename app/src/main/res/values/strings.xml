@@ -100,5 +100,6 @@
     <string name="orders">Orders</string>
     <string name="update_shop">Update Shop</string>
     <string name="edit_product">Edit Product</string>
+    <string name="reset">Reset</string>
 
 </resources>
