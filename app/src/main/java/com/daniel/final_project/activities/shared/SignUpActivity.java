@@ -1,4 +1,4 @@
-package com.daniel.final_project.activities;
+package com.daniel.final_project.activities.shared;
 
 import android.content.Intent;
 import android.os.Bundle;

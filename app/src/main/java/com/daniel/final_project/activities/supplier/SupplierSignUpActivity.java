@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.daniel.final_project.R;
+import com.daniel.final_project.activities.shared.LandingPageActivity;
 import com.daniel.final_project.interfaces.supplier.SupplierURLCallBack;
 import com.daniel.final_project.objects.Shop;
 import com.daniel.final_project.services.MyFireBase;
@@ -49,6 +50,10 @@ public class SupplierSignUpActivity extends AppCompatActivity {
             } else {
                 shop.setImageUrlSquare(photoURL);
                 insertShop();
+                Intent intent = new Intent(getBaseContext(), LandingPageActivity.class);
+                startActivity(intent);
+                myFireBase.updateUserIsSignUpState(true);
+                finish();
             }
         }
     };
@@ -114,8 +119,8 @@ public class SupplierSignUpActivity extends AppCompatActivity {
                     savePhoto();
                 } else {
                     insertShop();
+                    finish();
                 }
-                finish();
             }
         });
 
@@ -194,6 +199,5 @@ public class SupplierSignUpActivity extends AppCompatActivity {
                 .setDescription(description)
                 .setUid(FirebaseAuth.getInstance().getCurrentUser().getUid());
         myFireBase.updateShop(shop);
-        myFireBase.updateUserIsSignUpState(true);
     }
 }

@@ -1,4 +1,4 @@
-package com.daniel.final_project.activities;
+package com.daniel.final_project.activities.shared;
 
 import android.animation.Animator;
 import android.content.Intent;

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.daniel.final_project.activities.LandingPageActivity;
+import com.daniel.final_project.activities.shared.LandingPageActivity;
 import com.daniel.final_project.services.MyFireBase;
 
 public class LogOutFragment extends Fragment {
