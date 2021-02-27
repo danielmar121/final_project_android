@@ -26,6 +26,7 @@
         <item>Fish</item>
         <item>Meat</item>
         <item>Vegetable</item>
+        <item>Clothes</item>
     </string-array>
 
     //SUPPLIER ADDING PRODUCT PAGE

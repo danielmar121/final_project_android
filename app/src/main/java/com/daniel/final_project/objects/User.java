@@ -8,7 +8,6 @@ public class User {
     private String lastName = "";
     private String phone = "";
     private String email = "";
-    private String favoriteShops = "";
     private Boolean supplier = false;
     private Boolean isSignUp = false;
 
@@ -57,15 +56,6 @@ public class User {
 
     public User setEmail(String email) {
         this.email = email;
-        return this;
-    }
-
-    public String getFavoriteShops() {
-        return favoriteShops;
-    }
-
-    public User setFavoriteShops(String favoriteShops) {
-        this.favoriteShops = favoriteShops;
         return this;
     }
 
